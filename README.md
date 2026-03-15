@@ -18,3 +18,4 @@ View your app in AI Studio: https://ai.studio/apps/6189043a-b58d-4d5c-bee4-9ab5d
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+# dirtcake_web
