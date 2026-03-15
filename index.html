@@ -9,21 +9,22 @@
     <title>Dirtcake Studio | Designer Toys & Futuristic Collectibles</title>
 
     <script type="text/javascript">
-      // GitHub Pages SPA Hack
-      var pathSegs = window.location.pathname.split("/");
-      // Redirect to index.html with the current path as a query string
-      window.location.replace(
-        window.location.protocol +
-          "//" +
-          window.location.hostname +
-          (window.location.port ? ":" + window.location.port : "") +
-          "/?/" +
-          pathSegs.slice(1).join("/") +
-          (window.location.search
-            ? "&" + window.location.search.slice(1)
-            : "") +
-          window.location.hash,
-      );
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash,
+          );
+        }
+      })(window.location);
     </script>
 
     <meta
@@ -59,25 +60,6 @@
       property="twitter:image"
       content="https://dirtcakestudio.com/images/og-share-cover.png"
     />
-
-    <script type="text/javascript">
-      (function (l) {
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            })
-            .join("?");
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash,
-          );
-        }
-      })(window.location);
-    </script>
     <script type="module" crossorigin src="/assets/index-EBl5XOvn.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DjJyA_rF.css">
   </head>

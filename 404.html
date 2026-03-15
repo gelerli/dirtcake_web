@@ -1,87 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Dirtcake Studio | Designer Toys & Futuristic Collectibles</title>
-
+    <meta charset="utf-8" />
+    <title>Dirtcake Studio</title>
     <script type="text/javascript">
-      // GitHub Pages SPA Hack
+      // 2. The REDIRECT script: Sends the 404 path to index.html as a query string
       var pathSegs = window.location.pathname.split("/");
-      // Redirect to index.html with the current path as a query string
-      window.location.replace(
+      var redirectUrl =
         window.location.protocol +
-          "//" +
-          window.location.hostname +
-          (window.location.port ? ":" + window.location.port : "") +
-          "/?/" +
-          pathSegs.slice(1).join("/") +
-          (window.location.search
-            ? "&" + window.location.search.slice(1)
-            : "") +
-          window.location.hash,
-      );
+        "//" +
+        window.location.hostname +
+        (window.location.port ? ":" + window.location.port : "") +
+        "/?/" +
+        pathSegs.slice(1).join("/") +
+        (window.location.search
+          ? "&" + window.location.search.slice(1).replace(/&/g, "~and~")
+          : "") +
+        window.location.hash;
+      window.location.replace(redirectUrl);
     </script>
-
-    <meta
-      name="title"
-      content="Dirtcake Studio | Designer Toys & Collectibles"
-    />
-    <meta
-      name="description"
-      content="Istanbul-based creative studio specializing in limited edition designer toys and physical collectibles."
-    />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://dirtcake.studio/" />
-    <meta
-      property="og:title"
-      content="Dirtcake Studio | Istanbul - Designer Toys & Collectibles"
-    />
-    <meta
-      property="og:description"
-      content="Forging limited-edition designer toys and physical artifacts that exist at the intersection of raw, enthusiastic craftsmanship and humorous chaos."
-    />
-    <meta
-      property="og:image"
-      content="https://dirtcakestudio.com/images/og-share-cover.png"
-    />
-
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta
-      property="twitter:title"
-      content="Dirtcake Studio | Istanbul - Designer Toys & Collectibles"
-    />
-    <meta
-      property="twitter:image"
-      content="https://dirtcakestudio.com/images/og-share-cover.png"
-    />
-
-    <script type="text/javascript">
-      (function (l) {
-        if (l.search[1] === "/") {
-          var decoded = l.search
-            .slice(1)
-            .split("&")
-            .map(function (s) {
-              return s.replace(/~and~/g, "&");
-            })
-            .join("?");
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash,
-          );
-        }
-      })(window.location);
-    </script>
-    <script type="module" crossorigin src="/assets/index-EBl5XOvn.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DjJyA_rF.css">
   </head>
-  <body>
-    <div id="root"></div>
-  </body>
+  <body></body>
 </html>
