@@ -7,6 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Dirtcake Studio | Designer Toys & Futuristic Collectibles</title>
+
+    <script type="text/javascript">
+      // GitHub Pages SPA Hack
+      var pathSegs = window.location.pathname.split("/");
+      // Redirect to index.html with the current path as a query string
+      window.location.replace(
+        window.location.protocol +
+          "//" +
+          window.location.hostname +
+          (window.location.port ? ":" + window.location.port : "") +
+          "/?/" +
+          pathSegs.slice(1).join("/") +
+          (window.location.search
+            ? "&" + window.location.search.slice(1)
+            : "") +
+          window.location.hash,
+      );
+    </script>
+
     <meta
       name="title"
       content="Dirtcake Studio | Designer Toys & Collectibles"
