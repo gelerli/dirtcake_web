@@ -171,7 +171,7 @@ export const TOYS = [
       "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
     year: "2024",
     material: "Resin",
-    collection: "ACTION FIGURES",
+    collection: "DESIGNER TOYS",
   },
   /*
 
