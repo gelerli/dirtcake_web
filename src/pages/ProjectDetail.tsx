@@ -1,7 +1,7 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TOYS, NEON_COLORS } from "../constants";
 
@@ -13,19 +13,25 @@ export default function ProjectDetail() {
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-
-  // Logic to generate "Other Projects" suggestions
-  const [randomProjects, setRandomProjects] = useState<typeof TOYS>([]);
+  const [isTimerPaused, setIsTimerPaused] = useState(false);
+  const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Update suggestions whenever the slug changes
+  const [randomProjects, setRandomProjects] = useState<typeof TOYS>([]);
+
   useEffect(() => {
+    window.scrollTo(0, 0);
+    const mainContainer = document.querySelector("main");
+    if (mainContainer) {
+      mainContainer.scrollTop = 0;
+    }
+
     setActiveImageIndex(0);
     const others = TOYS.filter((t) => t.slug !== slug);
     const shuffled = [...others].sort(() => 0.5 - Math.random());
     setRandomProjects(shuffled.slice(0, 4));
   }, [slug]);
 
-  // Assign random colors to the main toy and suggestions for the neon effect
   const toyWithColor = useMemo(() => {
     if (!toy) return null;
     return {
@@ -44,9 +50,9 @@ export default function ProjectDetail() {
 
   const projectImages = toy ? toy.galleryImages : [];
 
-  // Auto-cycle gallery images with 9s base and 4s hover delay
+  // Auto-cycle logic
   useEffect(() => {
-    if (projectImages.length <= 1) return;
+    if (projectImages.length <= 1 || isTimerPaused) return;
 
     const baseInterval = 9000;
     const currentDelay = isHovered ? baseInterval + 4000 : baseInterval;
@@ -56,7 +62,13 @@ export default function ProjectDetail() {
     }, currentDelay);
 
     return () => clearInterval(interval);
-  }, [projectImages.length, isHovered]);
+  }, [projectImages.length, isHovered, isTimerPaused]);
+
+  useEffect(() => {
+    return () => {
+      if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+    };
+  }, []);
 
   if (!toy || !toyWithColor) {
     return (
@@ -73,6 +85,15 @@ export default function ProjectDetail() {
     );
   }
 
+  const handleManualNav = (action: () => void) => {
+    action();
+    setIsTimerPaused(true);
+    if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+    pauseTimeoutRef.current = setTimeout(() => {
+      setIsTimerPaused(false);
+    }, 5000);
+  };
+
   const nextImage = () =>
     setActiveImageIndex((prev) => (prev + 1) % projectImages.length);
   const prevImage = () =>
@@ -85,64 +106,81 @@ export default function ProjectDetail() {
       <Helmet>
         <title>{`${toy.title} ${toy.subtitle} | Dirtcake Studio`}</title>
         <meta name="description" content={toy.description} />
-        <meta
-          property="og:title"
-          content={`${toy.title} - Limited Edition Collectible`}
-        />
-        <meta property="og:description" content={toy.description} />
-        <meta property="og:image" content={toy.coverImage} />
-        <meta
-          property="og:url"
-          content={`https://dirtcake.studio/project/${toy.slug}`}
-        />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex-grow pb-24">
-        {/* Main Project Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-32">
           <div className="flex flex-col gap-6">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8 }}
+            <div
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="relative aspect-[4/5] overflow-hidden bg-black/5 group"
             >
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeImageIndex}
-                  src={projectImages[activeImageIndex]}
-                  alt={`${toy.title} view ${activeImageIndex + 1}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="w-full h-full object-cover"
-                />
-              </AnimatePresence>
+              {/* Sliding Carousel Track */}
+              <motion.div
+                className="flex h-full w-full"
+                animate={{ x: `-${activeImageIndex * 100}%` }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              >
+                {projectImages.map((img, idx) => (
+                  <div key={idx} className="w-full h-full flex-shrink-0">
+                    <img
+                      src={img}
+                      alt={`${toy.title} view ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                      draggable={false}
+                    />
+                  </div>
+                ))}
+              </motion.div>
 
-              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+              {/* Navigation Arrows: Fixed for Touchscreens */}
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 pointer-events-none opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                 <button
-                  onClick={prevImage}
+                  onClick={() => handleManualNav(prevImage)}
+                  type="button"
                   className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center hover:bg-white transition-colors shadow-lg pointer-events-auto"
                 >
                   <ChevronLeft size={20} />
                 </button>
                 <button
-                  onClick={nextImage}
+                  onClick={() => handleManualNav(nextImage)}
+                  type="button"
                   className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center hover:bg-white transition-colors shadow-lg pointer-events-auto"
                 >
                   <ChevronRight size={20} />
                 </button>
               </div>
-            </motion.div>
 
+              {/* Pagination Pills */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {projectImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() =>
+                      handleManualNav(() => setActiveImageIndex(idx))
+                    }
+                    className={`h-1.5 transition-all duration-500 rounded-full ${
+                      idx === activeImageIndex
+                        ? "w-8 bg-white shadow-sm"
+                        : "w-2 bg-white/40 hover:bg-white/60"
+                    }`}
+                    aria-label={`Switch to image ${idx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Thumbnail strip */}
             <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
               {projectImages.map((img, idx) => (
                 <button
                   key={idx}
-                  onClick={() => setActiveImageIndex(idx)}
+                  type="button"
+                  onClick={() =>
+                    handleManualNav(() => setActiveImageIndex(idx))
+                  }
                   className={`relative w-24 aspect-square flex-shrink-0 overflow-hidden border-2 transition-all duration-300 ${idx === activeImageIndex ? "border-black" : "border-transparent opacity-50 hover:opacity-100"}`}
                 >
                   <img
@@ -205,7 +243,7 @@ export default function ProjectDetail() {
           </div>
         </div>
 
-        {/* Other Projects Section */}
+        {/* Other Projects */}
         <div className="border-t border-black/5 pt-24">
           <div className="flex justify-between items-end mb-12">
             <div>
@@ -223,7 +261,6 @@ export default function ProjectDetail() {
               VIEW ALL
             </Link>
           </div>
-
           <div className="grid grid-cols-2 landscape:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {projectsWithColors.map((project, idx) => (
               <Link

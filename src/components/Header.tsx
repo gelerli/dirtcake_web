@@ -26,7 +26,6 @@ export default function Header() {
 
   return (
     <>
-      {/* Removed mix-blend-difference from the main header */}
       <header
         className={`fixed top-0 left-0 w-full z-50 px-8 flex justify-between items-start ${isHome ? "" : "bg-white/70 md:bg-white/80 backdrop-blur-md"} pointer-events-none ${isReducedHeader ? "py-4 md:py-6" : "py-4 md:py-10"}`}
       >
@@ -36,13 +35,11 @@ export default function Header() {
           className="flex flex-col pointer-events-auto"
         >
           <Link to="/" className="group">
-            {/* Logo remains at 100% opacity with no blend mode */}
             <h1
               className={`font-display font-extrabold text-3xl tracking-tighter ${logoTheme.color} ${logoTheme.neonClass} uppercase transition-all duration-300`}
             >
               Dirtcake
             </h1>
-            {/* Difference effect applied only to sub-text */}
             <div className={isHome ? "mix-blend-difference" : ""}>
               <span
                 className={`text-[11px] font-bold tracking-[0.4em] ${isHome ? "text-white" : "text-black"} uppercase`}
@@ -53,7 +50,6 @@ export default function Header() {
           </Link>
         </motion.div>
 
-        {/* Navigation items wrapped in difference effect when on Home */}
         <nav
           className={`hidden md:flex gap-14 items-center pointer-events-auto ${isHome ? "mix-blend-difference" : ""}`}
         >
@@ -74,14 +70,15 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Menu button also wrapped in difference */}
-        <div
-          className={`md:hidden pointer-events-auto ${isHome ? "mix-blend-difference" : ""}`}
-        >
-          <button onClick={() => setIsMenuOpen(true)}>
+        {/* FIX: Removed mix-blend-difference from the mobile toggle and gave it 
+          the logoTheme color. This ensures the icon is always visible regardless 
+          of background colors or width changes.
+        */}
+        <div className="md:hidden pointer-events-auto">
+          <button onClick={() => setIsMenuOpen(true)} className="p-2">
             <Menu
-              size={24}
-              className={`${isHome ? "text-white" : "text-black"} cursor-pointer hover:text-neon-green transition-colors`}
+              size={28}
+              className={`${logoTheme.color} ${logoTheme.neonClass} cursor-pointer transition-colors`}
             />
           </button>
         </div>

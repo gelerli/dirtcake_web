@@ -1,9 +1,21 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { TOYS, NEON_COLORS } from "../constants";
 
 export default function Gallery() {
+  // Reset scroll to top when navigation to Gallery occurs
+  useEffect(() => {
+    // Reset for mobile/tablet (window scroll)
+    window.scrollTo(0, 0);
+
+    // Reset for desktop (internal main container scroll)
+    const mainContainer = document.querySelector("main");
+    if (mainContainer) {
+      mainContainer.scrollTop = 0;
+    }
+  }, []);
+
   const groupedCollections = useMemo(() => {
     // 1. Group toys by collection
     const groups: Record<string, typeof TOYS> = {};
@@ -68,7 +80,7 @@ export default function Gallery() {
             }
           >
             <h2 className="font-display text-5xl sm:text-6xl md:text-8xl font-black text-black uppercase mb-12 tracking-tighter break-words">
-              COLLECTIONS -{" "}
+              //{" "}
               <span
                 className={`${collection.headerColor.color} ${collection.headerColor.neonClass}`}
               >

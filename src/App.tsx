@@ -5,7 +5,7 @@
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async"; // Added import
+import { HelmetProvider } from "react-helmet-async";
 import Header from "./components/Header.tsx";
 import Footer from "./components/Footer.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
@@ -18,14 +18,14 @@ import ProjectDetail from "./pages/ProjectDetail.tsx";
 export default function App() {
   return (
     <HelmetProvider>
-      {" "}
-      {/* Added Provider */}
       <Router>
         <ScrollToTop />
-        <div className="h-screen flex flex-col bg-white overflow-hidden">
+        {/* Changed h-screen and overflow-hidden to md: only so mobile can scroll naturally */}
+        <div className="min-h-screen flex flex-col bg-white md:h-screen md:overflow-hidden">
           <Header />
 
-          <main className="flex-grow overflow-y-auto flex flex-col">
+          {/* On mobile, we let the whole page scroll. On desktop, we keep the internal scroll. */}
+          <main className="flex-grow flex flex-col md:overflow-y-auto">
             <div className="flex-grow flex flex-col">
               <Routes>
                 <Route path="/" element={<Home />} />
