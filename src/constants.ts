@@ -173,6 +173,32 @@ export const TOYS = [
     material: "Resin",
     collection: "DESIGNER TOYS",
   },
+  {
+    id: 7,
+    slug: "manduck",
+    title: "MANDUCK",
+    subtitle: " ",
+    info: "IN ANOTHER FORM",
+    color: "text-neon-pink",
+    neonClass: "neon-text-pink",
+    coverImage: "/images/manduck-cover.webp",
+    galleryImages: [
+      "/images/manduck-cover.webp",
+      "/images/manduck-2.webp",
+      "/images/manduck-3.webp",
+      "/images/manduck-4.webp",
+      "/images/manduck-5.webp",
+      "/images/manduck-6.webp",
+      "/images/manduck-7.webp",
+      "/images/manduck-8.webp",
+      "/images/manduck-9.webp",
+    ],
+    description:
+      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
+    year: "2025",
+    material: "Resin",
+    collection: "ACTION FIGURES",
+  },
   /*
 
   collection: "CHARM", collection: "PRINTS", collection: "STICKERS",
