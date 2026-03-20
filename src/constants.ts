@@ -41,15 +41,15 @@ export const TOYS = [
     info: "feel it on your cheek...",
     color: "text-neon-pink",
     neonClass: "neon-text-pink",
-    coverImage: "/images/kiss-1.webp",
+    coverImage: "/images/kiss-2.webp",
     galleryImages: [
-      "/images/kiss-1.webp",
       "/images/kiss-2.webp",
       "/images/kiss-3.webp",
       "/images/kiss-4.webp",
       "/images/kiss-5.webp",
       "/images/kiss-6.webp",
       "/images/kiss-7.webp",
+      "/images/kiss-cover.webp",
     ],
     description:
       "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
