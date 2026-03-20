@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect } from "react";
 import { motion } from "motion/react";
-import { Instagram } from "lucide-react";
+import { Instagram, Twitter } from "lucide-react";
 
 export default function About() {
   // Reset scroll to top when navigation to Gallery occurs
@@ -23,7 +23,8 @@ export default function About() {
           animate={{ opacity: 1, x: 0 }}
           className="font-display text-6xl md:text-8xl font-black text-black uppercase mb-12 tracking-tighter"
         >
-          ABOUT <span className="text-neon-blue neon-text-blue">DIRTCAKE</span>
+          ABOUT{" "}
+          <span className="text-neon-coral neon-text-coral">DIRTCAKE</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -40,11 +41,12 @@ export default function About() {
               intersection of raw, enthusiastic craftsmanship and humorous
               chaos.
             </p>
-            <p className="text-lg leading-relaxed text-black/70"></p>
-            Established in 2023, our mission is to tease the contemporary art
-            establishment through collectibles, stickers, prints, charms, and
-            other urban relics; Every release is a limited edition exploration
-            of modern age, sarcasm, culture, and urban mythology.
+            <p className="text-lg leading-relaxed text-black/70">
+              Established in 2023, our mission is to tease the contemporary art
+              establishment through collectibles, stickers, prints, charms, and
+              other urban relics; Every release is a limited edition exploration
+              of modern age, sarcasm, culture, and urban mythology.
+            </p>
             <div className="pt-4">
               <div className="flex gap-4 items-center">
                 <a
@@ -58,6 +60,21 @@ export default function About() {
                     className="group-hover:scale-110 transition-transform"
                   />
                   @dirtcakestudio
+                </a>
+              </div>
+              <br />
+              <div className="flex gap-4 items-center">
+                <a
+                  href="https://x.com/dirtcakestudio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.4em] uppercase text-black hover:text-neon-coral transition-colors group"
+                >
+                  <Twitter
+                    size={18}
+                    className="group-hover:scale-110 transition-transform"
+                  />
+                  dirtcakestudio
                 </a>
               </div>
             </div>

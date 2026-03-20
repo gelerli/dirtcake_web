@@ -85,7 +85,7 @@ export default function Contact() {
                   href="mailto:hello@dirtcakestudio.com"
                   className="text-2xl font-display font-black hover:text-neon-blue transition-colors"
                 >
-                  hello@dirtcakestudio.com
+                  dirtcakestudio@gmail.com
                 </a>
               </div>
               <div>

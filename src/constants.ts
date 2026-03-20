@@ -28,7 +28,7 @@ export const TOYS = [
       "/images/slaveduck-4.webp",
     ],
     description:
-      "A fusion of traditional Japanese aesthetics and high-tech materials. Cyber Mochi features a translucent shell with internal fiber-optic lighting that pulses with a rhythmic glow.",
+      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
     year: "2023",
     material: "Resin",
     collection: "DESIGNER TOYS",

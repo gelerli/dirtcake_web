@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { NEON_COLORS } from "../constants";
+import { Instagram, Twitter } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -136,10 +137,23 @@ export default function Header() {
               <p className="text-[10px] font-bold tracking-[0.3em] uppercase opacity-50 mb-4">
                 Connect with us
               </p>
-              <div className="flex gap-8">
-                <span className="text-xs font-bold tracking-[0.2em] uppercase hover:text-neon-pink cursor-pointer">
-                  Instagram
-                </span>
+              <div className="flex gap-10">
+                <a
+                  href="https://www.instagram.com/dirtcakestudio/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-neon-pink transition-colors"
+                >
+                  <Instagram size={20} />
+                </a>
+                <a
+                  href="https://x.com/dirtcakestudio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-neon-pink transition-colors"
+                >
+                  <Twitter size={20} />
+                </a>
               </div>
             </div>
           </motion.div>
