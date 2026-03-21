@@ -102,7 +102,7 @@ export default function ProjectDetail() {
     );
 
   return (
-    <div className="flex-grow bg-white pt-32 md:pt-48 flex flex-col">
+    <div className="flex-grow bg-white pt-32 md:pt-32 flex flex-col">
       <Helmet>
         <title>{`${toy.title} ${toy.subtitle} | Dirtcake Studio`}</title>
         <meta name="description" content={toy.description} />
@@ -135,7 +135,7 @@ export default function ProjectDetail() {
               </motion.div>
 
               {/* Navigation Arrows: Fixed for Touchscreens */}
-              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 pointer-events-none opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 pointer-events-none opacity-30 md:opacity-0 md:group-hover:opacity-50 transition-opacity duration-300">
                 <button
                   onClick={() => handleManualNav(prevImage)}
                   type="button"
@@ -203,7 +203,7 @@ export default function ProjectDetail() {
                 {toy.info}
               </span>
               <h1
-                className={`font-display text-7xl md:text-9xl font-black uppercase leading-none mb-8 ${toyWithColor.color} ${toyWithColor.neonClass}`}
+                className={`font-display text-6xl md:text-8xl font-black uppercase leading-none mb-8 ${toyWithColor.color} ${toyWithColor.neonClass}`}
               >
                 {toy.title}
                 <br />
