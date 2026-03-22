@@ -11,6 +11,10 @@
   --color-neon-royal: #2f5dff;
   --color-neon-coral: #ff5a5f;
   --color-neon-purple: #7c4eff;
+  --color-neon-orange: #ff9100;
+  --color-neon-lime: #a6ff00;
+  --color-neon-violet: #8b00ff;
+  --color-neon-amber: #ffcc00;
 }
 
 @layer base {
@@ -54,6 +58,27 @@
   text-shadow:
     0 0 5px rgba(124, 78, 255, 0.5),
     0 0 10px rgba(124, 78, 255, 0.3);
+}
+/* New Color Utilities */
+.neon-text-orange {
+  text-shadow:
+    0 0 5px rgba(255, 145, 0, 0.5),
+    0 0 10px rgba(255, 145, 0, 0.3);
+}
+.neon-text-lime {
+  text-shadow:
+    0 0 5px rgba(166, 255, 0, 0.5),
+    0 0 10px rgba(166, 255, 0, 0.3);
+}
+.neon-text-violet {
+  text-shadow:
+    0 0 5px rgba(139, 0, 255, 0.5),
+    0 0 10px rgba(139, 0, 255, 0.3);
+}
+.neon-text-amber {
+  text-shadow:
+    0 0 5px rgba(255, 204, 0, 0.5),
+    0 0 10px rgba(255, 204, 0, 0.3);
 }
 
 /* Standard Diagonal Splits */

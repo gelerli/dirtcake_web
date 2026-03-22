@@ -6,6 +6,10 @@ export const NEON_COLORS = [
   { color: "text-neon-royal", hex: "#4d4dff", neonClass: "neon-text-royal" },
   { color: "text-neon-coral", hex: "#ff4d4d", neonClass: "neon-text-coral" },
   { color: "text-neon-purple", hex: "#bc13fe", neonClass: "neon-text-purple" },
+  { color: "text-neon-orange", hex: "#ff9100", neonClass: "neon-text-orange" },
+  { color: "text-neon-lime", hex: "#a6ff00", neonClass: "neon-text-lime" },
+  { color: "text-neon-violet", hex: "#8b00ff", neonClass: "neon-text-violet" },
+  { color: "text-neon-amber", hex: "#ffcc00", neonClass: "neon-text-amber" },
 ];
 
 export const getRandomNeonColor = () =>
@@ -28,7 +32,7 @@ export const TOYS = [
       "/images/slaveduck-4.webp",
     ],
     description:
-      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
+      "This piece takes the familiar rubber duck silhouette and wraps it in high-contrast black leather aesthetics and industrial hardware. It's a sharp, yet underground twist on nostalgia that definitely isn't playing by the rules.",
     year: "2023",
     material: "Resin",
     collection: "DESIGNER TOYS",
@@ -38,7 +42,7 @@ export const TOYS = [
     slug: "thekiss",
     title: "THE",
     subtitle: "KISS",
-    info: "feel it on your cheek...",
+    info: "feel the heat...",
     color: "text-neon-pink",
     neonClass: "neon-text-pink",
     coverImage: "/images/kiss-2.webp",
@@ -52,7 +56,7 @@ export const TOYS = [
       "/images/kiss-cover.webp",
     ],
     description:
-      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
+      "A tribute to retro-glam. The massive, sculpted hair and the heart-shaped kiss suspended in mid-air create a permanent state of flirtation. It's a bold, colorful piece that feels like a vintage pin-up poster stepped out into three dimensions.",
     year: "2023",
     material: "Resin",
     collection: "DESIGNER TOYS",
@@ -75,7 +79,7 @@ export const TOYS = [
       "/images/zureyder-6.webp",
     ],
     description:
-      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
+      "Part tank, part beast, part industrial accident. The grimy, weathered paint job and triple-pipe exhaust give it the look of a machine that's been drifting through the wasteland for years. It's a heavy, mechanical sculpt with a massive profile and a lot of grit.",
     year: "2024",
     material: "Resin",
     collection: "DESIGNER TOYS",
@@ -98,7 +102,7 @@ export const TOYS = [
       "/images/mrgiraffe-6.webp",
     ],
     description:
-      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
+      "The physical embodiment of a long weekend. With a sweatband on a head literally over the clouds, a chocolate dip icecream cone in hand, and cool slides on his white socks, this giraffe is operating at a level of relaxation most can only hope for. It's a top-heavy, absurd slice of peak leisure.",
     year: "2024",
     material: "Resin",
     collection: "DESIGNER TOYS",
@@ -121,7 +125,7 @@ export const TOYS = [
       "/images/sneaky-6.webp",
     ],
     description:
-      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
+      "A high-visibility warning sign disguised as a collector's piece or some Saturday morning villainy with a sharp edge. The jagged blade held in the mouth and the severed tail bone adds a bit of gruesome humor to the mix. It's a colorful, dangerous-looking reptile that's clearly up to something no good.",
     year: "2024",
     material: "Resin",
     collection: "DESIGNER TOYS",
@@ -146,7 +150,7 @@ export const TOYS = [
       "/images/goodboy-8.webp",
     ],
     description:
-      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
+      "Luxury obedience with a dark edge. That massive industrial zipper isn't just a great tactile detail—it makes you wonder if these pups are actually just a high-fashion disguise for something else entirely. A silent, weighted companion for a modern collection.",
     year: "2024",
     material: "Resin",
     collection: "DESIGNER TOYS",
@@ -168,7 +172,7 @@ export const TOYS = [
       "/images/dabomb-cover.webp",
     ],
     description:
-      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
+      "A high-energy hazard with a very short fuse. Between the classic red shades and the oversized sneakers, this figure carries the chaotic energy of someone who wasn't invited but showed up anyway. It's built for a shelf that needs a literal explosion of personality.",
     year: "2024",
     material: "Resin",
     collection: "DESIGNER TOYS",
@@ -178,7 +182,7 @@ export const TOYS = [
     slug: "manduck",
     title: "MANDUCK",
     subtitle: " ",
-    info: "IN ANOTHER FORM",
+    info: "SAME OLD DUCK, ANOTHER FORM...",
     color: "text-neon-pink",
     neonClass: "neon-text-pink",
     coverImage: "/images/manduck-cover.webp",
@@ -194,7 +198,7 @@ export const TOYS = [
       "/images/manduck-9.webp",
     ],
     description:
-      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
+      "The counterpart to the chaos. Cloaked in a full-body leather-style harness with a ball gag detail, this duck swaps innocence for a strictly underground aesthetic. The shiny black gear against the bright yellow skin makes for an aggressive, unmistakable profile.",
     year: "2025",
     material: "Resin",
     collection: "ACTION FIGURES",
@@ -220,7 +224,7 @@ export const TOYS = [
       "/images/realfriend-9.webp",
     ],
     description:
-      "The Neon Ghost haunts the urban landscape. Crafted from a proprietary phosphorescent polymer, it absorbs light during the day and emits a haunting pink radiance in total darkness.",
+      "A raw, unpolished take on companionship. She looks like an artifact from a fever dream that someone decided to materialize in a garage workshop, with a presence that feels more like a degenerate thought than a factory product. She doesn't try to be pretty; she just tries to be real.",
     year: "2025",
     material: "Resin",
     collection: "ACTION FIGURES",
