@@ -240,7 +240,7 @@ export default function ProjectDetail() {
                 </div>
                 <div>
                   <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-black/30 block mb-2">
-                    LIMITED EDITION
+                    {toy.editioninfo}
                   </span>
                   <span className="text-sm font-bold uppercase">
                     {toy.edition}
