@@ -7,15 +7,12 @@ import { TOYS, NEON_COLORS } from "../constants";
 export default function Home() {
   // --- 1. STATE INITIALIZATION ---
   const [indices, setIndices] = useState(() => {
-    // Pick a random starting index for the left fragment
     const first = Math.floor(Math.random() * TOYS.length);
     let second;
-    // Ensure the right fragment isn't the same as the left on first load
     do {
       second = Math.floor(Math.random() * TOYS.length);
     } while (second === first && TOYS.length > 1);
 
-    // Shuffle neon colors so left, right, and the loader all get different colors
     const colorIndices = [...Array(NEON_COLORS.length).keys()].sort(
       () => Math.random() - 0.5,
     );
@@ -26,43 +23,49 @@ export default function Home() {
       leftColor: NEON_COLORS[colorIndices[0]],
       rightColor: NEON_COLORS[colorIndices[1]],
       loaderColor: NEON_COLORS[colorIndices[2]],
-      // 'version' acts as a unique key suffix. This forces Framer Motion to
-      // see a "new" component even if the ID remains the same, ensuring 100% reliable transitions.
       version: 0,
     };
   });
 
-  // --- 2. ANIMATION SETTINGS ---
-  const [isHovered, setIsHovered] = useState(false); // Pauses everything when true
-  const [progress, setProgress] = useState(0); // Percentage (0-100) of the current cycle
-  const [isFading, setIsFading] = useState(false); // Trigger for the text opacity fade
+  const [isHovered, setIsHovered] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [isFading, setIsFading] = useState(false);
 
-  // ADJUST THESE VALUES TO CHANGE TIMING:
-  const DURATION = 7000; // Total time each project stays visible (7 seconds)
-  const FADE_DURATION_MS = 1500; // How many ms BEFORE the slide the text starts fading (1.5 seconds)
-  const INTERVAL = 50; // Frequency of progress updates (lower = smoother bar)
+  const DURATION = 7000;
+  const FADE_DURATION_MS = 1500;
+  const INTERVAL = 50;
 
   /**
-   * --- 3. CORE LOGIC: triggerNext ---
-   * This handles the "Slide" phase. It picks the next items and resets the fade.
+   * handleTouchEnd
+   * Fixes the mobile "freeze" by manually triggering a hover-off state
+   * when the user stops touching the screen.
+   */
+  const handleTouchEnd = () => {
+    setTimeout(() => setIsHovered(false), 100);
+  };
+
+  /**
+   * --- 2. SHUFFLE LOGIC ---
+   * Strictly filters the current toy out of the pool for each fragment
+   * to prevent a toy from transitioning into itself.
    */
   const triggerNext = useCallback(() => {
-    setIsFading(false); // Reset text to visible for the next project pair
+    setIsFading(false);
     setIndices((prev) => {
       const allIndices = Array.from(TOYS.keys());
 
-      // Filter the pool to guarantee the next Left isn't the same as current Left
       const leftPool = allIndices.filter((idx) => idx !== prev.left);
       const nextLeft = leftPool[Math.floor(Math.random() * leftPool.length)];
 
-      // Filter the pool to guarantee next Right isn't the same as current Right OR new Left
       const rightPool = allIndices.filter(
         (idx) => idx !== prev.right && idx !== nextLeft,
       );
+
       const finalRightPool =
         rightPool.length > 0
           ? rightPool
           : allIndices.filter((idx) => idx !== nextLeft);
+
       const nextRight =
         finalRightPool[Math.floor(Math.random() * finalRightPool.length)];
 
@@ -76,37 +79,29 @@ export default function Home() {
         leftColor: NEON_COLORS[colorIndices[0]],
         rightColor: NEON_COLORS[colorIndices[1]],
         loaderColor: NEON_COLORS[colorIndices[2]],
-        version: prev.version + 1, // Change version to force the AnimatePresence slide
+        version: prev.version + 1,
       };
     });
-    setProgress(0); // Restart progress bar at 0%
+    setProgress(0);
   }, []);
 
-  /**
-   * --- 4. THE TIMER EFFECT ---
-   * This loop runs every 50ms. It calculates the progress and decides when to start the fade.
-   */
+  // --- 3. THE TIMER EFFECT ---
   useEffect(() => {
     let timer: NodeJS.Timeout;
 
-    // Only run the timer if the user's mouse is NOT hovering over the gallery
     if (!isHovered) {
       timer = setInterval(() => {
         setProgress((prev) => {
           const nextProgress = prev + (INTERVAL / DURATION) * 100;
-
-          // CALCULATE FADE THRESHOLD:
-          // We convert FADE_DURATION_MS into a percentage of the total DURATION.
-          // Example: If FADE is 2s and DURATION is 7s, threshold is ~71.4%
           const fadeThreshold =
             ((DURATION - FADE_DURATION_MS) / DURATION) * 100;
 
           if (nextProgress >= fadeThreshold) {
-            setIsFading(true); // Trigger the opacity change on the text
+            setIsFading(true);
           }
 
           if (nextProgress >= 100) {
-            triggerNext(); // Progress reached 100%, perform the slide
+            triggerNext();
             return 0;
           }
           return nextProgress;
@@ -114,15 +109,12 @@ export default function Home() {
       }, INTERVAL);
     }
 
-    // Clean up the interval when the component unmounts or hover state changes
     return () => clearInterval(timer);
   }, [isHovered, triggerNext, DURATION, FADE_DURATION_MS]);
 
-  // --- 5. DATA MAPPING ---
   const leftToy = TOYS[indices.left];
   const rightToy = TOYS[indices.right];
 
-  // Formatting helper to break long subtitle/info strings into multiple lines
   const formatInfo = (info: string) => {
     const words = info.split(" ");
     if (words.length > 3) {
@@ -141,11 +133,13 @@ export default function Home() {
     <div className="flex-[2_0_0%] flex flex-col bg-white min-h-[50vh] md:min-h-[80vh] max-md:landscape:min-h-[110vh]">
       <main
         className="flex-1 relative flex flex-col justify-center px-3 pt-2 md:pt-3 pb-20 md:pb-6"
-        onMouseEnter={() => setIsHovered(true)} // Pauses progress and keeps text visible
-        onMouseLeave={() => setIsHovered(false)} // Resumes progress and potential fade
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onTouchStart={() => setIsHovered(true)}
+        onTouchEnd={handleTouchEnd}
       >
         <div className="flex-1 relative overflow-hidden">
-          {/* --- NEON LOADER (DIAGONAL LINE) --- */}
+          {/* --- NEON LOADER --- */}
           <div className="absolute inset-0 z-40 pointer-events-none">
             <svg
               className="w-full h-full overflow-visible"
@@ -154,7 +148,6 @@ export default function Home() {
             >
               <defs>
                 <mask id="loader-mask">
-                  {/* This rect moves to 'uncover' the neon line based on progress percentage */}
                   <motion.rect
                     x="0"
                     y="0"
@@ -167,7 +160,6 @@ export default function Home() {
                   />
                 </mask>
               </defs>
-              {/* Static faint path (the track) */}
               <path
                 d="M 35 100 L 65 0"
                 stroke="currentColor"
@@ -176,7 +168,6 @@ export default function Home() {
                 fill="none"
                 className={`${indices.loaderColor.color} opacity-30 transition-colors duration-1000`}
               />
-              {/* Dynamic glowing path (the progress) */}
               <path
                 d="M 35 100 L 65 0"
                 stroke="currentColor"
@@ -191,7 +182,7 @@ export default function Home() {
           </div>
 
           <div className="absolute inset-0 flex">
-            {/* --- LEFT FRAGMENT (Slides Up on Exit) --- */}
+            {/* --- LEFT FRAGMENT --- */}
             <div className="absolute inset-0 z-10 diagonal-split overflow-hidden">
               <AnimatePresence initial={false} mode="popLayout">
                 <motion.div
@@ -207,16 +198,14 @@ export default function Home() {
                     className="absolute inset-0 z-30 flex lg:items-center lg:justify-start"
                   >
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700 z-20" />
+                    {/* Fixed Height: 'h-full w-full' ensures it fills the diagonal fragment container */}
                     <img
                       src={leftToy.coverImage}
                       alt={leftToy.title}
                       className="w-full h-full lg:w-[70%] lg:h-auto lg:max-h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 tablet-portrait-only"
                     />
-
-                    {/* LEFT TEXT BOX: Linked to isFading state for pre-slide transparency */}
                     <motion.div
                       animate={{ opacity: isFading ? 0 : 1 }}
-                      // The duration here (1.5) controls how 'smooth' the fade out feels
                       transition={{ duration: 1.5, ease: "easeInOut" }}
                       className="absolute top-[35%] translate-y-[-50%] left-6 z-30 pointer-events-none md:top-[40%] md:left-16"
                     >
@@ -244,7 +233,7 @@ export default function Home() {
               </AnimatePresence>
             </div>
 
-            {/* --- RIGHT FRAGMENT (Slides Down on Exit) --- */}
+            {/* --- RIGHT FRAGMENT --- */}
             <div className="absolute inset-0 z-0 diagonal-split-reverse overflow-hidden">
               <AnimatePresence initial={false} mode="popLayout">
                 <motion.div
@@ -260,13 +249,12 @@ export default function Home() {
                     className="absolute inset-0 z-30 flex lg:items-center lg:justify-end"
                   >
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700 z-20" />
+                    {/* Fixed Height: 'h-full w-full' ensures it fills the reverse diagonal fragment container */}
                     <img
                       src={rightToy.coverImage}
                       alt={rightToy.title}
                       className="w-full h-full lg:w-[70%] lg:h-auto lg:max-h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 tablet-portrait-only"
                     />
-
-                    {/* RIGHT TEXT BOX: Linked to isFading state for pre-slide transparency */}
                     <motion.div
                       animate={{ opacity: isFading ? 0 : 1 }}
                       transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -299,12 +287,11 @@ export default function Home() {
         </div>
       </main>
 
-      {/* --- EXPLORE BUTTON --- */}
       <Link to="/gallery">
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="fixed bottom-[100px] md:bottom-25 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-15 bg-black text-white px-10 py-5 flex items-center gap-4 shadow-2xl group z-50 rounded-full hover:bg-neon-green hover:text-black transition-all duration-300 whitespace-nowrap"
+          className="fixed bottom-[90px] md:bottom-25 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-15 bg-black text-white px-10 py-5 flex items-center gap-4 shadow-2xl group z-50 rounded-full hover:bg-neon-green hover:text-black transition-all duration-300 whitespace-nowrap"
         >
           <span className="text-xs font-bold tracking-[0.3em] uppercase">
             {" "}

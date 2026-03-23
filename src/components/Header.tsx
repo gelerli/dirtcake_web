@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 px-8 flex justify-between items-start ${isHome ? "" : "bg-white/70 md:bg-white/80 backdrop-blur-md"} pointer-events-none ${isReducedHeader ? "py-4 md:py-6" : "py-4 md:py-10"}`}
+        className={`fixed top-0 left-0 w-full z-50 px-8 flex justify-between items-start ${isHome ? "" : "bg-white/70 md:bg-white/80 backdrop-blur-md"} pointer-events-none ${isReducedHeader ? "py-4 md:py-6" : "py-4 md:py-6"}`}
       >
         <motion.div
           initial={{ opacity: 0, y: -20 }}
