@@ -36,7 +36,7 @@ export const TOYS = [
     year: "2023",
     material: "Resin",
     editioninfo: "LIMITED EDITION",
-    edition: "11 PIECES, 2 AVAILABLE",
+    edition: "12 PIECES, 1 AVAILABLE",
     collection: "DESIGNER TOYS",
   },
   {
@@ -112,7 +112,7 @@ export const TOYS = [
     year: "2024",
     material: "Resin",
     editioninfo: "LIMITED EDITION",
-    edition: "5 PIECES, 1 AVAILABLE",
+    edition: "6 PIECES, 3 AVAILABLE",
     collection: "DESIGNER TOYS",
   },
   {
@@ -137,7 +137,7 @@ export const TOYS = [
     year: "2024",
     material: "Resin",
     editioninfo: "LIMITED EDITION",
-    edition: "11 PIECES, 3 AVAILABLE",
+    edition: "10 PIECES, 7 AVAILABLE",
     collection: "DESIGNER TOYS",
   },
   {
@@ -164,7 +164,7 @@ export const TOYS = [
     year: "2024",
     material: "Resin",
     editioninfo: "LIMITED EDITION",
-    edition: "14 PIECES, 4 AVAILABLE.",
+    edition: "14 PIECES, 5 AVAILABLE.",
     collection: "DESIGNER TOYS",
   },
   {
@@ -216,7 +216,7 @@ export const TOYS = [
     year: "2025",
     material: "Resin",
     editioninfo: "LIMITED EDITION",
-    edition: "11 PIECES, 1 AVAILBLE",
+    edition: "13 PIECES, 2 AVAILBLE",
     collection: "ACTION FIGURES",
   },
   {
