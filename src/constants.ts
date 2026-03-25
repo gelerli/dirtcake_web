@@ -7,9 +7,9 @@ export const NEON_COLORS = [
   { color: "text-neon-coral", hex: "#ff4d4d", neonClass: "neon-text-coral" },
   { color: "text-neon-purple", hex: "#bc13fe", neonClass: "neon-text-purple" },
   { color: "text-neon-orange", hex: "#ff9100", neonClass: "neon-text-orange" },
-  { color: "text-neon-lime", hex: "#a6ff00", neonClass: "neon-text-lime" },
-  { color: "text-neon-violet", hex: "#8b00ff", neonClass: "neon-text-violet" },
-  { color: "text-neon-amber", hex: "#ffcc00", neonClass: "neon-text-amber" },
+  //{ color: "text-neon-lime", hex: "#a6ff00", neonClass: "neon-text-lime" },
+  //{ color: "text-neon-violet", hex: "#8b00ff", neonClass: "neon-text-violet" },
+  //{ color: "text-neon-amber", hex: "#ffcc00", neonClass: "neon-text-amber" },
 ];
 
 export const getRandomNeonColor = () =>
