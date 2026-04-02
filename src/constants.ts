@@ -271,6 +271,7 @@ export const TOYS = [
       "/images/zureyder-hotrod-12.webp",
       "/images/zureyder-hotrod-13.webp",
       "/images/zureyder-hotrod-14.webp",
+      "/images/zureyder-hotrod-turntable.webp",
     ],
     description:
       "The 'Hot Rod' upgrade kit transforms Zureyder from a sluggish wasteland wanderer into a high-octane marauder. Swapping artillery for exposed chrome and aggressive, over-sized exhaust pipes, this kit injects a sense of reckless speed into the massive silhouette. It maintains that signature industrial grit while adding the unmistakable, scorched-metal aesthetic of a machine built for the drag strips of the apocalypse.",
