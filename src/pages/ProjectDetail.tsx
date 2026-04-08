@@ -49,6 +49,8 @@ export default function ProjectDetail() {
   }, [randomProjects]);
 
   const projectImages = toy ? toy.galleryImages : [];
+  // ADDED: Safely grab the alt texts from the toy data
+  const projectAlts = toy && "galleryAlt" in toy ? (toy as any).galleryAlt : [];
 
   // Auto-cycle logic
   useEffect(() => {
@@ -126,7 +128,9 @@ export default function ProjectDetail() {
                   <div key={idx} className="w-full h-full flex-shrink-0">
                     <img
                       src={img}
-                      alt={`${toy.title} view ${idx + 1}`}
+                      /* MODIFIED: Injecting dynamic alt text from constants.ts. 
+                         Fallback to generic title if alt is missing for that index. */
+                      alt={projectAlts[idx] || `${toy.title} view ${idx + 1}`}
                       className="w-full h-full object-cover"
                       draggable={false}
                     />
@@ -185,7 +189,12 @@ export default function ProjectDetail() {
                 >
                   <img
                     src={img}
-                    alt={`Thumbnail ${idx + 1}`}
+                    /* MODIFIED: Injecting dynamic alt text from constants.ts for thumbnails as well. */
+                    alt={
+                      projectAlts[idx]
+                        ? `Thumbnail: ${projectAlts[idx]}`
+                        : `Thumbnail ${idx + 1}`
+                    }
                     className="w-full h-full object-cover"
                   />
                 </button>

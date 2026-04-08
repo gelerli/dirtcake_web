@@ -128,7 +128,9 @@ export default function Gallery() {
                     >
                       <img
                         src={toy.coverImage}
-                        alt={toy.title}
+                        /* MODIFIED: Injecting dynamic coverAlt text from constants.ts. 
+                           Fallback to toy.title if the coverAlt property is missing. */
+                        alt={(toy as any).coverAlt || toy.title}
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 opacity-80 group-hover:opacity-100"
                         referrerPolicy="no-referrer"
                       />

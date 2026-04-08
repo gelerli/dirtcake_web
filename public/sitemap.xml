@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://dirtcakestudio.com/</loc>
+    <lastmod>2024-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://dirtcakestudio.com/gallery</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://dirtcakestudio.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dirtcakestudio.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/slave-duck</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/slaveduck-cover.webp</image:loc>
+      <image:title>Slave Duck Designer Toy</image:title>
+      <image:caption>Black leather aesthetic industrial rubber duck designer toy by Dirtcake Studio.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/thekiss</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/kiss-cover.webp</image:loc>
+      <image:title>The Kiss Designer Toy</image:title>
+      <image:caption>Retro-glam resin sculpture designer toy with heart-shaped kiss detail.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/zureyder</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/zureyder-cover.webp</image:loc>
+      <image:title>Züreyder Mechanical Beast</image:title>
+      <image:caption>Industrial post apocalyptic tank-beast designer toy giraffe with weathered paint and grit.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/mr-giraffe</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/mrgiraffe-cover.webp</image:loc>
+      <image:title>Mister Giraffe Leisure Figure</image:title>
+      <image:caption>Designer toy giraffe with sweatband, slides, white socks and ice cream cone reminding a happy sunny day.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/sneaky-snake</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/sneaky-cover.webp</image:loc>
+      <image:title>Sneaky Snake Designer Toy</image:title>
+      <image:caption>Vibrant reptile figure with jagged blade and cut tail detail.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/good-boy</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/goodboy-cover.webp</image:loc>
+      <image:title>Good Boy Resin Dog</image:title>
+      <image:caption>Luxury obedience dog designer toy with oversized industrial zipper detail.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/da-bomb</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/dabomb-cover.webp</image:loc>
+      <image:title>Da Bomb Explosion Figure</image:title>
+      <image:caption>High-energy character designer resin toy with red shades and sneakers.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/manduck</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/manduck-cover.webp</image:loc>
+      <image:title>Manduck Action Figure</image:title>
+      <image:caption>Underground aesthetic man-duck action figure in leather harness and pants.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/real-friend</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/realfriend-cover.webp</image:loc>
+      <image:title>Real Friend Designer Toy</image:title>
+      <image:caption>Raw and dirty style resin sculpture.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/zureyder-hotrod</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/zureyder-hotrod-01.webp</image:loc>
+      <image:title>Züreyder Hot Rod Upgrade Kit</image:title>
+      <image:caption>Marauder Hot Rod style chrome exhaust and engine parts upgrade kit for Zureyder.</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://dirtcakestudio.com/project/robits</loc>
+    <image:image>
+      <image:loc>https://dirtcakestudio.com/images/robits-01.webp</image:loc>
+      <image:title>Robits Sticker Pack Collection</image:title>
+      <image:caption>Robits Pack 1 holographic 90s robots sticker pack collection by Dirtcake Studio</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
