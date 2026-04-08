@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+// Switched from ShoppingBag to ShoppingCart
+import { Menu, X, ShoppingCart, Instagram, Twitter } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { NEON_COLORS } from "../constants";
-import { Instagram, Twitter } from "lucide-react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +24,11 @@ export default function Header() {
     { name: "About", path: "/about", hover: "hover:text-neon-blue" },
     { name: "Contact", path: "/contact", hover: "hover:text-neon-pink" },
   ];
+
+  /** * NEW ADDITION: Shopier URL
+   * Centralized link for your Shopier store.
+   */
+  const SHOPIER_URL = "https://www.shopier.com/dirtcakestudio";
 
   return (
     <>
@@ -54,6 +59,25 @@ export default function Header() {
         <nav
           className={`hidden md:flex gap-14 items-center pointer-events-auto ${isHome ? "mix-blend-difference" : ""}`}
         >
+          {/** * NEW ADDITION: Desktop Shopping Cart Icon
+           * Placed first in the desktop sequence as requested.
+           * Switched to ShoppingCart icon.
+           */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <a
+              href={SHOPIER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`transition-colors hover:text-neon-coral ${isHome ? "text-white" : "text-black"}`}
+              aria-label="Shop"
+            >
+              <ShoppingCart size={20} />
+            </a>
+          </motion.div>
+
           {navItems.map((item, i) => (
             <motion.div
               key={item.name}
@@ -75,7 +99,19 @@ export default function Header() {
           the logoTheme color. This ensures the icon is always visible regardless 
           of background colors or width changes.
         */}
-        <div className="md:hidden pointer-events-auto">
+        <div className="md:hidden pointer-events-auto flex items-center gap-4">
+          {/** * NEW ADDITION: Mobile Shopping Cart Icon
+           * Switched to ShoppingCart icon.
+           */}
+          <a
+            href={SHOPIER_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${logoTheme.color} ${logoTheme.neonClass}`}
+          >
+            <ShoppingCart size={24} />
+          </a>
+
           <button onClick={() => setIsMenuOpen(true)} className="p-2">
             <Menu
               size={28}
@@ -131,6 +167,24 @@ export default function Header() {
                   </Link>
                 </motion.div>
               ))}
+
+              {/** * NEW ADDITION: Mobile Shop Link
+               * Large text link inside the mobile menu overlay with ShoppingCart icon.
+               */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 * navItems.length }}
+              >
+                <a
+                  href={SHOPIER_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-4xl font-display font-black tracking-tight text-black uppercase hover:text-neon-yellow transition-colors flex items-center gap-4"
+                >
+                  Shop <ShoppingCart size={32} />
+                </a>
+              </motion.div>
             </nav>
 
             <div className="mt-auto pt-10 border-t border-black/10">
