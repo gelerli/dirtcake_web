@@ -12,9 +12,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
     // Generates a sitemap.xml file on build
-    Sitemap({
-      hostname: "https://dirtcakestudio.com", // Replace with your actual domain
-    }),
+    //Sitemap({
+    //  hostname: "https://dirtcakestudio.com", // Replace with your actual domain
+    //}),
   ],
 
   resolve: {
