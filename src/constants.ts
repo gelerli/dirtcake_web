@@ -299,7 +299,7 @@ export const TOYS = [
     ],
     description:
       "Robits is a curated sticker collection that reimagines the most iconic robots of 90s cinema and TV through a fresh, stylized lens. Each piece captures the soul of these legendary machines in a compact form — blending nostalgic retro-cartoon aesthetics with a distinct three-quarter perspective. From towering mechs to galactic tin men, Robits transforms heavy-duty metal into a minimalist, collectible art style perfect for any surface.",
-    year: "2025",
+    year: "2026",
     material: "Holographic Sticker Paper",
     editioninfo: "OPEN EDITION",
     edition: "-",
