@@ -52,7 +52,7 @@ export const TOYS = [
   },
   {
     id: 2,
-    slug: "thekiss",
+    slug: "the-kiss",
     title: "THE",
     subtitle: "KISS",
     info: "feel the heat...",
