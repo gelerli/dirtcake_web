@@ -472,7 +472,7 @@ export const TOYS = [
     year: "2025",
     material: "Resin",
     editioninfo: "COMMISSION WORK",
-    edition: "-",
+    edition: "Not For Sale",
     collection: "COMMISSIONS",
   },
 ];
