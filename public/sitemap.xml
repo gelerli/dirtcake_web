@@ -3,130 +3,130 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-    <loc>https://dirtcakestudio.com/</loc>
+    <loc>https://www.dirtcakestudio.com/</loc>
     <lastmod>2024-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dirtcakestudio.com/gallery</loc>
+    <loc>https://www.dirtcakestudio.com/gallery</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://dirtcakestudio.com/about</loc>
+    <loc>https://www.dirtcakestudio.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://dirtcakestudio.com/contact</loc>
+    <loc>https://www.dirtcakestudio.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/slave-duck</loc>
+    <loc>https://www.dirtcakestudio.com/project/slave-duck</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/slave-duck-designer-toy-cover..webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/slave-duck-designer-toy-cover..webp</image:loc>
       <image:title>Slave Duck Designer Toy by Dirtcake Studio</image:title>
       <image:caption>Black leather aesthetic industrial rubber duck designer toy by Dirtcake Studio.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/the-kiss</loc>
+    <loc>https://www.dirtcakestudio.com/project/the-kiss</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/kiss-designer-toy-figure-sculpture-2.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/kiss-designer-toy-figure-sculpture-2.webp</image:loc>
       <image:title>The Kiss Designer Toy by Dirtcake Studio</image:title>
       <image:caption>Retro-glam resin sculpture designer toy with heart-shaped kiss detail by Dirtcake Studio.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/zureyder</loc>
+    <loc>https://www.dirtcakestudio.com/project/zureyder</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/zureyder-designer-toy-cover.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/zureyder-designer-toy-cover.webp</image:loc>
       <image:title>Züreyder Mechanical Beast Designer Toy by Dirtcake Studio</image:title>
       <image:caption>Industrial post apocalyptic tank-beast designer toy giraffe with weathered paint and grit by Dirtcake Studio.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/mr-giraffe</loc>
+    <loc>https://www.dirtcakestudio.com/project/mr-giraffe</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/mr-giraffe-designer-toy-cover.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/mr-giraffe-designer-toy-cover.webp</image:loc>
       <image:title>Mister Giraffe Leisure Figure Designer Toy by Dirtcake Studio</image:title>
       <image:caption>Designer toy giraffe with sweatband, slides, white socks and ice cream cone reminding a happy sunny day by Dirtcake Studio.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/sneaky-snake</loc>
+    <loc>https://www.dirtcakestudio.com/project/sneaky-snake</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/sneaky-snake-designer-toy-cover.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/sneaky-snake-designer-toy-cover.webp</image:loc>
       <image:title>Sneaky Snake Designer Toy by Dirtcake Studio</image:title>
       <image:caption>Vibrant reptile figure with jagged blade and cut tail detail by Dirtcake Studio.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/good-boy</loc>
+    <loc>https://www.dirtcakestudio.com/project/good-boy</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/goodboy-designer-toy-cover.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/goodboy-designer-toy-cover.webp</image:loc>
       <image:title>Good Boy Resin Dog Designer Toy by Dirtcake Studio</image:title>
       <image:caption>Luxury obedience dog designer toy with oversized industrial zipper detail by Dirtcake Studio.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/da-bomb</loc>
+    <loc>https://www.dirtcakestudio.com/project/da-bomb</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/dabomb-designer-toy-cover.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/dabomb-designer-toy-cover.webp</image:loc>
       <image:title>Da Bomb Designer Toy Figure by Dirtcake Studio</image:title>
       <image:caption>High-energy character designer resin toy with red shades and sneakers by Dirtcake Studio.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/manduck</loc>
+    <loc>https://www.dirtcakestudio.com/project/manduck</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/manduck-designer-action-figure-toy-cover.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/manduck-designer-action-figure-toy-cover.webp</image:loc>
       <image:title>Manduck Action Figure Designer Toy by Dirtcake Studio</image:title>
       <image:caption>Underground aesthetic man-duck action figure in leather harness and pants by Dirtcake Studio.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/real-friend</loc>
+    <loc>https://www.dirtcakestudio.com/project/real-friend</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/real-friend-designer-action-figure-toy-cover.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/real-friend-designer-action-figure-toy-cover.webp</image:loc>
       <image:title>Real Friend Action Figure Designer Toy by Dirtcake Studio</image:title>
       <image:caption>Raw and dirty style resin action figure designer toy by Dirtcake Studio.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/zureyder-hotrod</loc>
+    <loc>https://www.dirtcakestudio.com/project/zureyder-hotrod</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/zureyder-hot-rod-upgrade-kit-toy-01.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/zureyder-hot-rod-upgrade-kit-toy-01.webp</image:loc>
       <image:title>Züreyder Hot Rod Upgrade Kit by Dirtcake Studio</image:title>
       <image:caption>Marauder Hot Rod style chrome exhaust and engine parts upgrade kit for Zureyder by Dirtcake Studio.</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/robits</loc>
+    <loc>https://www.dirtcakestudio.com/project/robits</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/robits-holographic-sticker-pack-1.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/robits-holographic-sticker-pack-1.webp</image:loc>
       <image:title>Robits Sticker Pack Collection by Dirtcake Studio</image:title>
       <image:caption>Robits Pack 1 holographic 90s robots sticker pack collection by Dirtcake Studio</image:caption>
     </image:image>
   </url>
 
   <url>
-    <loc>https://dirtcakestudio.com/project/genie-figure</loc>
+    <loc>https://www.dirtcakestudio.com/project/genie-figure</loc>
     <image:image>
-      <image:loc>https://dirtcakestudio.com/images/genie-mascot-figure-commission-1.webp</image:loc>
+      <image:loc>https://www.dirtcakestudio.com/images/genie-mascot-figure-commission-1.webp</image:loc>
       <image:title>Genie Mascot Figure by Dirtcake Studio</image:title>
       <image:caption>Genie mascot figure comission work for a tech startup by Dirtcake Studio</image:caption>
     </image:image>
