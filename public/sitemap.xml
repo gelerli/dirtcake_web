@@ -4,15 +4,16 @@
 
   <url>
     <loc>https://www.dirtcakestudio.com/</loc>
-    <lastmod>2024-04-08</lastmod>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.dirtcakestudio.com/gallery</loc>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
+</url>
   <url>
     <loc>https://www.dirtcakestudio.com/about</loc>
     <changefreq>monthly</changefreq>
