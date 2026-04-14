@@ -87,7 +87,8 @@ export default function Home() {
 
   // --- 3. THE TIMER EFFECT ---
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    // Option 1: Using ReturnType to avoid NodeJS namespace error
+    let timer: ReturnType<typeof setInterval>;
 
     if (!isHovered) {
       timer = setInterval(() => {
@@ -198,10 +199,9 @@ export default function Home() {
                     className="absolute inset-0 z-30 flex lg:items-center lg:justify-start"
                   >
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700 z-20" />
-                    {/* Fixed Height: 'h-full w-full' ensures it fills the diagonal fragment container */}
                     <img
                       src={leftToy.coverImage}
-                      alt={leftToy.title}
+                      alt={leftToy.coverAlt} // Updated SEO alt text
                       className="w-full h-full lg:w-[70%] lg:h-auto lg:max-h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 tablet-portrait-only"
                     />
                     <motion.div
@@ -249,10 +249,9 @@ export default function Home() {
                     className="absolute inset-0 z-30 flex lg:items-center lg:justify-end"
                   >
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700 z-20" />
-                    {/* Fixed Height: 'h-full w-full' ensures it fills the reverse diagonal fragment container */}
                     <img
                       src={rightToy.coverImage}
-                      alt={rightToy.title}
+                      alt={rightToy.coverAlt} // Updated SEO alt text
                       className="w-full h-full lg:w-[70%] lg:h-auto lg:max-h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 tablet-portrait-only"
                     />
                     <motion.div
