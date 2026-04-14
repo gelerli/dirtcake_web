@@ -2,20 +2,12 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
-import Sitemap from "vite-plugin-sitemap";
 
 export default defineConfig({
   // Adding base: '/' ensures the site works correctly on your custom domain
   base: "/",
 
-  plugins: [
-    react(),
-    tailwindcss(),
-    // Generates a sitemap.xml file on build
-    //Sitemap({
-    //  hostname: "https://dirtcakestudio.com", // Replace with your actual domain
-    //}),
-  ],
+  plugins: [react(), tailwindcss()],
 
   resolve: {
     alias: {
