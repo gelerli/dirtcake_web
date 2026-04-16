@@ -409,9 +409,9 @@ export const TOYS = [
     info: "Sticker Pack",
     color: "text-neon-pink",
     neonClass: "neon-text-pink",
-    coverImage: "/images/robits-holographic-sticker-pack-1.webp",
+    coverImage: "/images/robits-holographic-sticker-pack-2.webp",
     coverAlt:
-      "Robits Pack 1 holographic 90s robots sticker pack collection by Dirtcake Studio",
+      "Complete set of Robits Pack 1 holographic 90s robots sticker pack collection by Dirtcake Studio",
     galleryImages: [
       "/images/robits-holographic-sticker-pack-1.webp",
       "/images/robits-holographic-sticker-pack-2.webp",

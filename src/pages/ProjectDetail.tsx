@@ -105,10 +105,37 @@ export default function ProjectDetail() {
 
   return (
     <div className="flex-grow bg-white pt-32 md:pt-32 flex flex-col">
+      {/* --- ADDED: Comprehensive SEO Metadata for Google Search and Social Previews --- */}
       <Helmet>
+        {/* Dynamic SEO Title for Search Engines */}
         <title>{`${toy.title} ${toy.subtitle} | Dirtcake Studio`}</title>
-        <meta name="description" content={toy.description} />
+        {/* Description for Google Search Results (Limited to 160 characters for clarity) */}
+        <meta name="description" content={toy.description.substring(0, 160)} />
+
+        {/* Open Graph tags for Facebook, LinkedIn, and Discord link previews */}
+        <meta
+          property="og:title"
+          content={`${toy.title} - ${toy.subtitle} | Dirtcake Studio`}
+        />
+        <meta
+          property="og:description"
+          content={toy.description.substring(0, 160)}
+        />
+        <meta
+          property="og:image"
+          content={`https://dirtcakestudio.com${toy.coverImage}`}
+        />
+        <meta property="og:type" content="article" />
+
+        {/* Twitter/X Card meta tags for social media sharing */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${toy.title} - ${toy.subtitle}`} />
+        <meta
+          name="twitter:description"
+          content={toy.description.substring(0, 160)}
+        />
       </Helmet>
+      {/* --- END SEO ADDITION --- */}
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex-grow pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-32">
@@ -294,7 +321,7 @@ export default function ProjectDetail() {
                 <div className="group relative aspect-[3/4] overflow-hidden bg-black cursor-pointer">
                   <img
                     src={project.coverImage}
-                    alt={project.title}
+                    alt={project.coverAlt}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 opacity-80 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/20 to-transparent">
