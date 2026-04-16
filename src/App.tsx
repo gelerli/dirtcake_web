@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
@@ -20,12 +15,18 @@ export default function App() {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
-        {/* Changed h-screen and overflow-hidden to md: only so mobile can scroll naturally */}
-        <div className="min-h-screen flex flex-col bg-white md:h-screen md:overflow-hidden">
+        {/* 'isolation-isolate' ensures z-index and scroll contexts don't leak */}
+        <div className="min-h-screen flex flex-col bg-white md:h-screen md:overflow-hidden isolation-isolate">
           <Header />
 
-          {/* On mobile, we let the whole page scroll. On desktop, we keep the internal scroll. */}
-          <main className="flex-grow flex flex-col md:overflow-y-auto">
+          {/* We select this 'main' tag in ScrollToTop.tsx. 
+            On mobile, overflow is visible (natural scroll). 
+            On desktop, it handles the scrolling internally.
+          */}
+          <main
+            className="flex-grow flex flex-col md:overflow-y-auto"
+            id="main-content"
+          >
             <div className="flex-grow flex flex-col">
               <Routes>
                 <Route path="/" element={<Home />} />

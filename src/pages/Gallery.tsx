@@ -1,7 +1,7 @@
 import React, { useMemo, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
-import { TOYS, NEON_COLORS } from "../constants";
+import { TOYS, NEON_COLORS, Toy } from "../constants";
 
 export default function Gallery() {
   const [activeFilter, setActiveFilter] = useState("ALL");
@@ -25,7 +25,7 @@ export default function Gallery() {
 
   const groupedCollections = useMemo(() => {
     // Group toys by collection
-    const groups: Record<string, typeof TOYS> = {};
+    const groups: Record<string, Toy[]> = {};
 
     // Filter the TOYS first if a specific filter is selected
     const filteredToys =
@@ -130,7 +130,7 @@ export default function Gallery() {
                         src={toy.coverImage}
                         /* MODIFIED: Injecting dynamic coverAlt text from constants.ts. 
                            Fallback to toy.title if the coverAlt property is missing. */
-                        alt={(toy as any).coverAlt || toy.title}
+                        alt={toy.coverAlt || toy.title}
                         className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 opacity-80 group-hover:opacity-100"
                         referrerPolicy="no-referrer"
                       />

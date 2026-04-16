@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { TOYS, NEON_COLORS } from "../constants";
+import { TOYS, NEON_COLORS, Toy } from "../constants";
 
 export default function Home() {
   // --- 1. STATE INITIALIZATION ---
@@ -113,8 +113,8 @@ export default function Home() {
     return () => clearInterval(timer);
   }, [isHovered, triggerNext, DURATION, FADE_DURATION_MS]);
 
-  const leftToy = TOYS[indices.left];
-  const rightToy = TOYS[indices.right];
+  const leftToy: Toy = TOYS[indices.left];
+  const rightToy: Toy = TOYS[indices.right];
 
   const formatInfo = (info: string) => {
     const words = info.split(" ");

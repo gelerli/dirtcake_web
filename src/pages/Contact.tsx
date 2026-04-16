@@ -3,18 +3,6 @@ import { motion } from "motion/react";
 import { Send, Loader2 } from "lucide-react"; // Added Loader2 for the loading state
 
 export default function Contact() {
-  // Reset scroll to top when navigation to Gallery occurs
-  useEffect(() => {
-    // Reset for mobile/tablet (window scroll)
-    window.scrollTo(0, 0);
-
-    // Reset for desktop (internal main container scroll)
-    const mainContainer = document.querySelector("main");
-    if (mainContainer) {
-      mainContainer.scrollTop = 0;
-    }
-  }, []);
-
   const [formState, setFormState] = useState({
     name: "",
     email: "",

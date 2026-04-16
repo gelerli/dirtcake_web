@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: auto !important;
+}
+
 @theme {
   --font-sans: "Helvetica", "Arial", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Helvetica", "Arial", sans-serif;

@@ -1,3 +1,29 @@
+/**
+ * src/constants.ts
+ * * This file contains the centralized data and type definitions for the studio.
+ * Updated to include explicit Toy interface for SEO and accessibility properties.
+ */
+
+export interface Toy {
+  id: number;
+  slug: string;
+  title: string;
+  subtitle: string;
+  info: string;
+  color: string;
+  neonClass: string;
+  coverImage: string;
+  coverAlt: string;
+  galleryImages: string[];
+  galleryAlt: string[];
+  description: string;
+  year: string;
+  material: string;
+  editioninfo: string;
+  edition: string;
+  collection: string;
+}
+
 export const NEON_COLORS = [
   { color: "text-neon-blue", hex: "#00f3ff", neonClass: "neon-text-blue" },
   { color: "text-neon-pink", hex: "#ff00ff", neonClass: "neon-text-pink" },
@@ -5,17 +31,13 @@ export const NEON_COLORS = [
   { color: "text-neon-yellow", hex: "#fff700", neonClass: "neon-text-yellow" },
   { color: "text-neon-royal", hex: "#4d4dff", neonClass: "neon-text-royal" },
   { color: "text-neon-coral", hex: "#ff4d4d", neonClass: "neon-text-coral" },
-  //{ color: "text-neon-purple", hex: "#bc13fe", neonClass: "neon-text-purple" },
   { color: "text-neon-orange", hex: "#ff9100", neonClass: "neon-text-orange" },
-  //{ color: "text-neon-lime", hex: "#a6ff00", neonClass: "neon-text-lime" },
-  //{ color: "text-neon-violet", hex: "#8b00ff", neonClass: "neon-text-violet" },
-  //{ color: "text-neon-amber", hex: "#ffcc00", neonClass: "neon-text-amber" },
 ];
 
 export const getRandomNeonColor = () =>
   NEON_COLORS[Math.floor(Math.random() * NEON_COLORS.length)];
 
-export const TOYS = [
+export const TOYS: Toy[] = [
   {
     id: 1,
     slug: "slave-duck",
@@ -34,7 +56,6 @@ export const TOYS = [
       "/images/slave-duck-designer-toy-4.webp",
       "/images/slave-duck-designer-toy-cover.webp",
     ],
-    // ADDED: Array of descriptive alt texts matching the order of galleryImages
     galleryAlt: [
       "Slave Duck designer toy figure by Dirtcake Studio",
       "Back view of Slave Duck designer toy in black leather finish",

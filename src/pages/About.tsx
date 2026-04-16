@@ -3,18 +3,6 @@ import { motion } from "motion/react";
 import { Instagram, Twitter } from "lucide-react";
 
 export default function About() {
-  // Reset scroll to top when navigation to Gallery occurs
-  useEffect(() => {
-    // Reset for mobile/tablet (window scroll)
-    window.scrollTo(0, 0);
-
-    // Reset for desktop (internal main container scroll)
-    const mainContainer = document.querySelector("main");
-    if (mainContainer) {
-      mainContainer.scrollTop = 0;
-    }
-  }, []);
-
   return (
     <div className="flex-grow pt-32 md:pt-48 bg-white flex flex-col">
       <div className="max-w-4xl mx-auto px-8 flex-grow pb-20">

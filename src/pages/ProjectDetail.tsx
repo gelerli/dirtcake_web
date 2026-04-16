@@ -3,29 +3,23 @@ import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { TOYS, NEON_COLORS } from "../constants";
+import { TOYS, NEON_COLORS, Toy } from "../constants";
 
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
 
-  // Find current toy based on the URL slug
   const toy = useMemo(() => TOYS.find((t) => t.slug === slug), [slug]);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Update suggestions whenever the slug changes
-  const [randomProjects, setRandomProjects] = useState<typeof TOYS>([]);
+  const [randomProjects, setRandomProjects] = useState<Toy[]>([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    const mainContainer = document.querySelector("main");
-    if (mainContainer) {
-      mainContainer.scrollTop = 0;
-    }
+    // SCROLL LOGIC REMOVED: Now handled centrally by ScrollToTop.tsx
 
+    // Reset state for the new project view
     setActiveImageIndex(0);
     const others = TOYS.filter((t) => t.slug !== slug);
     const shuffled = [...others].sort(() => 0.5 - Math.random());
@@ -49,20 +43,15 @@ export default function ProjectDetail() {
   }, [randomProjects]);
 
   const projectImages = toy ? toy.galleryImages : [];
-  // ADDED: Safely grab the alt texts from the toy data
-  const projectAlts = toy && "galleryAlt" in toy ? (toy as any).galleryAlt : [];
+  const projectAlts = toy ? toy.galleryAlt : [];
 
-  // Auto-cycle logic
   useEffect(() => {
     if (projectImages.length <= 1 || isTimerPaused) return;
-
     const baseInterval = 9000;
     const currentDelay = isHovered ? baseInterval + 4000 : baseInterval;
-
     const interval = setInterval(() => {
       setActiveImageIndex((prev) => (prev + 1) % projectImages.length);
     }, currentDelay);
-
     return () => clearInterval(interval);
   }, [projectImages.length, isHovered, isTimerPaused]);
 
@@ -105,14 +94,9 @@ export default function ProjectDetail() {
 
   return (
     <div className="flex-grow bg-white pt-32 md:pt-32 flex flex-col">
-      {/* --- ADDED: Comprehensive SEO Metadata for Google Search and Social Previews --- */}
       <Helmet>
-        {/* Dynamic SEO Title for Search Engines */}
         <title>{`${toy.title} ${toy.subtitle} | Dirtcake Studio`}</title>
-        {/* Description for Google Search Results (Limited to 160 characters for clarity) */}
         <meta name="description" content={toy.description.substring(0, 160)} />
-
-        {/* Open Graph tags for Facebook, LinkedIn, and Discord link previews */}
         <meta
           property="og:title"
           content={`${toy.title} - ${toy.subtitle} | Dirtcake Studio`}
@@ -126,8 +110,6 @@ export default function ProjectDetail() {
           content={`https://dirtcakestudio.com${toy.coverImage}`}
         />
         <meta property="og:type" content="article" />
-
-        {/* Twitter/X Card meta tags for social media sharing */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={`${toy.title} - ${toy.subtitle}`} />
         <meta
@@ -135,7 +117,6 @@ export default function ProjectDetail() {
           content={toy.description.substring(0, 160)}
         />
       </Helmet>
-      {/* --- END SEO ADDITION --- */}
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex-grow pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-32">
@@ -145,7 +126,6 @@ export default function ProjectDetail() {
               onMouseLeave={() => setIsHovered(false)}
               className="relative aspect-[4/5] overflow-hidden bg-black/5 group"
             >
-              {/* Sliding Carousel Track */}
               <motion.div
                 className="flex h-full w-full"
                 animate={{ x: `-${activeImageIndex * 100}%` }}
@@ -155,8 +135,6 @@ export default function ProjectDetail() {
                   <div key={idx} className="w-full h-full flex-shrink-0">
                     <img
                       src={img}
-                      /* MODIFIED: Injecting dynamic alt text from constants.ts. 
-                         Fallback to generic title if alt is missing for that index. */
                       alt={projectAlts[idx] || `${toy.title} view ${idx + 1}`}
                       className="w-full h-full object-cover"
                       draggable={false}
@@ -165,7 +143,6 @@ export default function ProjectDetail() {
                 ))}
               </motion.div>
 
-              {/* Navigation Arrows: Fixed for Touchscreens */}
               <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 pointer-events-none opacity-30 md:opacity-0 md:group-hover:opacity-50 transition-opacity duration-300">
                 <button
                   onClick={() => handleManualNav(prevImage)}
@@ -183,7 +160,6 @@ export default function ProjectDetail() {
                 </button>
               </div>
 
-              {/* Pagination Pills */}
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {projectImages.map((_, idx) => (
                   <button
@@ -203,7 +179,6 @@ export default function ProjectDetail() {
               </div>
             </div>
 
-            {/* Thumbnail strip */}
             <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
               {projectImages.map((img, idx) => (
                 <button
@@ -216,7 +191,6 @@ export default function ProjectDetail() {
                 >
                   <img
                     src={img}
-                    /* MODIFIED: Injecting dynamic alt text from constants.ts for thumbnails as well. */
                     alt={
                       projectAlts[idx]
                         ? `Thumbnail: ${projectAlts[idx]}`
@@ -287,7 +261,7 @@ export default function ProjectDetail() {
           </div>
         </div>
 
-        {/* Other Projects */}
+        {/* Other Projects Section */}
         <div className="border-t border-black/5 pt-24">
           <div className="flex justify-between items-end mb-12">
             <div>
@@ -321,7 +295,8 @@ export default function ProjectDetail() {
                 <div className="group relative aspect-[3/4] overflow-hidden bg-black cursor-pointer">
                   <img
                     src={project.coverImage}
-                    alt={project.coverAlt}
+                    /* MODIFIED: Using coverAlt for keyword consistency in suggestions */
+                    alt={project.coverAlt || project.title}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 opacity-80 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/20 to-transparent">
