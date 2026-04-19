@@ -388,39 +388,7 @@ const TOYS = [
     edition: "1 of 1, SOLD OUT",
     collection: "designer toy",
   },
-  {
-    id: 11,
-    slug: "robits",
-    title: "ROBITS",
-    subtitle: "PACK-1",
-    info: "Sticker Pack",
-    color: "text-neon-pink",
-    neonClass: "neon-text-pink",
-    coverImage: "/images/robits-holographic-sticker-pack-2.webp",
-    coverAlt:
-      "Complete set of Robits Pack 1 holographic 90s robots sticker pack collection by Dirtcake Studio, featuring stylized robots in a three-quarter perspective art style.",
-    galleryImages: [
-      "/images/robits-holographic-sticker-pack-1.webp",
-      "/images/robits-holographic-sticker-pack-2.webp",
-      "/images/robits-holographic-sticker-pack-3.webp",
-      "/images/robits-holographic-sticker-pack-4.webp",
-      "/images/robits-holographic-sticker-pack-5.webp",
-    ],
-    galleryAlt: [
-      "Robits Pack 1 holographic 90s robots sticker collection, reimagining iconic machines through retro-cartoon aesthetics and a fresh, stylized art lens.",
-      "Complete set of chibified holographic robot stickers from the Robits Pack 1, capturing the soul of legendary machines in a compact, collectible sticker form.",
-      "Detail of the stylized retro-cartoon holographic robot stickers, transforming heavy-duty metal into a minimalist art style with a three-quarter perspective.",
-      "Detail of the stylized retro-cartoon holographic robot stickers, transforming heavy-duty metal into a minimalist art style with a three-quarter perspective.",
-      "Stylized retro-cartoon holographic robot stickers detail from the Pack 1 collection, featuring nostalgic iconic robot designs by Dirtcake Studio.",
-    ],
-    description:
-      "Robits is a curated sticker collection that reimagines the most iconic robots of 90s cinema and TV through a fresh, stylized lens. Each piece captures the soul of these legendary machines in a compact form — blending nostalgic retro-cartoon aesthetics with a distinct three-quarter perspective. From towering mechs to galactic tin men, Robits transforms heavy-duty metal into a minimalist, collectible art style perfect for any surface.",
-    year: "2026",
-    material: "Holographic Sticker Paper",
-    editioninfo: "OPEN EDITION",
-    edition: "-",
-    collection: "sticker pack",
-  },
+
   {
     id: 12,
     slug: "genie-figure",
