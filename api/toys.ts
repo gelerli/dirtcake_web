@@ -31,7 +31,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "LIMITED EDITION",
     edition: "12 PIECES, 1 AVAILABLE",
-    collection: "DESIGNER TOYS",
+    collection: "designer toy",
   },
   {
     id: 2,
@@ -70,7 +70,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "LIMITED EDITION",
     edition: "5 PIECES, SOLD OUT",
-    collection: "DESIGNER TOYS",
+    collection: "designer toy",
   },
   {
     id: 3,
@@ -107,7 +107,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "LIMITED EDITION",
     edition: "5 PIECES, SOLD OUT",
-    collection: "DESIGNER TOYS",
+    collection: "designer toy",
   },
   {
     id: 4,
@@ -142,7 +142,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "LIMITED EDITION",
     edition: "6 PIECES, 3 AVAILABLE",
-    collection: "DESIGNER TOYS",
+    collection: "designer toy",
   },
   {
     id: 5,
@@ -179,7 +179,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "LIMITED EDITION",
     edition: "10 PIECES, 7 AVAILABLE",
-    collection: "DESIGNER TOYS",
+    collection: "designer toy",
   },
   {
     id: 6,
@@ -218,7 +218,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "LIMITED EDITION",
     edition: "14 PIECES, 5 AVAILABLE.",
-    collection: "DESIGNER TOYS",
+    collection: "designer toy",
   },
   {
     id: 7,
@@ -251,7 +251,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "LIMITED EDITION",
     edition: "1 of 1, SOLD OUT",
-    collection: "DESIGNER TOYS",
+    collection: "designer toy",
   },
   {
     id: 8,
@@ -292,7 +292,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "LIMITED EDITION",
     edition: "13 PIECES, 2 AVAILBLE",
-    collection: "ACTION FIGURES",
+    collection: "action figure",
   },
   {
     id: 9,
@@ -333,7 +333,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "LIMITED EDITION",
     edition: "11 PIECES, SOLD OUT",
-    collection: "ACTION FIGURES",
+    collection: "action figure",
   },
   {
     id: 10,
@@ -386,7 +386,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "LIMITED EDITION",
     edition: "1 of 1, SOLD OUT",
-    collection: "DESIGNER TOYS",
+    collection: "designer toy",
   },
   {
     id: 11,
@@ -419,7 +419,7 @@ const TOYS = [
     material: "Holographic Sticker Paper",
     editioninfo: "OPEN EDITION",
     edition: "-",
-    collection: "STICKER PACKS",
+    collection: "sticker pack",
   },
   {
     id: 12,
@@ -459,7 +459,7 @@ const TOYS = [
     material: "Resin",
     editioninfo: "COMMISSION WORK",
     edition: "Not For Sale",
-    collection: "COMMISSIONS",
+    collection: "commission",
   },
 ];
 
