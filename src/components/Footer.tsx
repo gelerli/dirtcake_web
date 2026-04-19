@@ -50,7 +50,7 @@ export default function Footer() {
 
   return (
     <>
-      <footer className="px-8 py md:py-8 flex flex-row justify-between items-center gap-4 z-40 bg-white">
+      <footer className="px-8 py-2 md:py-8 flex flex-row justify-between items-center gap-4 z-40 bg-white">
         <div className="flex gap-10">
           <a
             href="https://www.instagram.com/dirtcakestudio/"
