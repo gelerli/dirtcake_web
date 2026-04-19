@@ -1,18 +1,27 @@
 import React, { useState, useEffect, useCallback } from "react";
+// motion handles animations; AnimatePresence allows elements to animate while being removed from the DOM
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+// Constants for the toy data and neon color themes
 import { TOYS, NEON_COLORS, Toy } from "../constants";
 
 export default function Home() {
-  // --- 1. STATE INITIALIZATION ---
+  /**
+   * --- 1. STATE INITIALIZATION ---
+   * This complex initializer runs only once on page load.
+   * It picks two unique random toys and three random neon colors.
+   */
   const [indices, setIndices] = useState(() => {
+    // Pick first random index for the left side
     const first = Math.floor(Math.random() * TOYS.length);
     let second;
+    // Ensure the right side is not the same as the left side
     do {
       second = Math.floor(Math.random() * TOYS.length);
     } while (second === first && TOYS.length > 1);
 
+    // Create a shuffled array of available neon colors
     const colorIndices = [...Array(NEON_COLORS.length).keys()].sort(
       () => Math.random() - 0.5,
     );
@@ -20,25 +29,27 @@ export default function Home() {
     return {
       left: first,
       right: second,
-      leftColor: NEON_COLORS[colorIndices[0]],
-      rightColor: NEON_COLORS[colorIndices[1]],
-      loaderColor: NEON_COLORS[colorIndices[2]],
-      version: 0,
+      leftColor: NEON_COLORS[colorIndices[0]], // Theme for left text
+      rightColor: NEON_COLORS[colorIndices[1]], // Theme for right text
+      loaderColor: NEON_COLORS[colorIndices[2]], // Theme for the diagonal line
+      version: 0, // Used as a key to trigger Framer Motion animations on change
     };
   });
 
-  const [isHovered, setIsHovered] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [isFading, setIsFading] = useState(false);
+  // UI States
+  const [isHovered, setIsHovered] = useState(false); // Pauses the timer when user interacts
+  const [progress, setProgress] = useState(0); // Values 0 to 100 for the visual loader
+  const [isFading, setIsFading] = useState(false); // Triggers text fade-out just before transition
 
-  const DURATION = 7000;
-  const FADE_DURATION_MS = 1500;
-  const INTERVAL = 50;
+  // Timing constants in Milliseconds
+  const DURATION = 7000; // Time per toy (7 seconds)
+  const FADE_DURATION_MS = 1500; // Text starts fading 1.5s before the switch
+  const INTERVAL = 50; // How often the timer updates (smoothness)
 
   /**
    * handleTouchEnd
-   * Fixes the mobile "freeze" by manually triggering a hover-off state
-   * when the user stops touching the screen.
+   * Solves a common mobile bug where "touch" counts as "hover".
+   * This ensures the timer resumes after a user taps/touches the screen.
    */
   const handleTouchEnd = () => {
     setTimeout(() => setIsHovered(false), 100);
@@ -46,17 +57,19 @@ export default function Home() {
 
   /**
    * --- 2. SHUFFLE LOGIC ---
-   * Strictly filters the current toy out of the pool for each fragment
-   * to prevent a toy from transitioning into itself.
+   * Memoized function to select the next pair of toys.
+   * It ensures the new toys are different from the current ones.
    */
   const triggerNext = useCallback(() => {
-    setIsFading(false);
+    setIsFading(false); // Reset fade for the new set
     setIndices((prev) => {
       const allIndices = Array.from(TOYS.keys());
 
+      // Filter pool to avoid repeating the current left toy
       const leftPool = allIndices.filter((idx) => idx !== prev.left);
       const nextLeft = leftPool[Math.floor(Math.random() * leftPool.length)];
 
+      // Filter pool to avoid repeating current right OR the new left
       const rightPool = allIndices.filter(
         (idx) => idx !== prev.right && idx !== nextLeft,
       );
@@ -69,6 +82,7 @@ export default function Home() {
       const nextRight =
         finalRightPool[Math.floor(Math.random() * finalRightPool.length)];
 
+      // Re-shuffle colors for the new set
       const colorIndices = [...Array(NEON_COLORS.length).keys()].sort(
         () => Math.random() - 0.5,
       );
@@ -79,21 +93,27 @@ export default function Home() {
         leftColor: NEON_COLORS[colorIndices[0]],
         rightColor: NEON_COLORS[colorIndices[1]],
         loaderColor: NEON_COLORS[colorIndices[2]],
-        version: prev.version + 1,
+        version: prev.version + 1, // Increment version to trigger new animation cycle
       };
     });
-    setProgress(0);
+    setProgress(0); // Reset progress bar
   }, []);
 
-  // --- 3. THE TIMER EFFECT ---
+  /**
+   * --- 3. THE TIMER EFFECT ---
+   * This effect manages the 7-second countdown.
+   * If the user hovers over the images, the countdown stops.
+   */
   useEffect(() => {
-    // Option 1: Using ReturnType to avoid NodeJS namespace error
     let timer: ReturnType<typeof setInterval>;
 
     if (!isHovered) {
       timer = setInterval(() => {
         setProgress((prev) => {
+          // Convert current time to a percentage of total DURATION
           const nextProgress = prev + (INTERVAL / DURATION) * 100;
+
+          // Calculate when to start the fade-out effect
           const fadeThreshold =
             ((DURATION - FADE_DURATION_MS) / DURATION) * 100;
 
@@ -101,6 +121,7 @@ export default function Home() {
             setIsFading(true);
           }
 
+          // At 100% progress, trigger the next shuffle
           if (nextProgress >= 100) {
             triggerNext();
             return 0;
@@ -110,12 +131,19 @@ export default function Home() {
       }, INTERVAL);
     }
 
+    // Cleanup: Stops the timer if the component is destroyed
     return () => clearInterval(timer);
   }, [isHovered, triggerNext, DURATION, FADE_DURATION_MS]);
 
+  // Derived variables for cleaner JSX
   const leftToy: Toy = TOYS[indices.left];
   const rightToy: Toy = TOYS[indices.right];
 
+  /**
+   * formatInfo
+   * Breaks long descriptions into two lines if they exceed 3 words
+   * to ensure text stays within the visual diagonal area.
+   */
   const formatInfo = (info: string) => {
     const words = info.split(" ");
     if (words.length > 3) {
@@ -131,6 +159,7 @@ export default function Home() {
   };
 
   return (
+    // Main landing container with responsive min-heights
     <div className="flex-[2_0_0%] flex flex-col bg-white min-h-[50vh] md:min-h-[80vh] max-md:landscape:min-h-[110vh]">
       <main
         className="flex-1 relative flex flex-col justify-center px-3 pt-2 md:pt-3 pb-20 md:pb-6"
@@ -140,7 +169,7 @@ export default function Home() {
         onTouchEnd={handleTouchEnd}
       >
         <div className="flex-1 relative overflow-hidden">
-          {/* --- NEON LOADER --- */}
+          {/* --- NEON LOADER (The Diagonal Progress Line) --- */}
           <div className="absolute inset-0 z-40 pointer-events-none">
             <svg
               className="w-full h-full overflow-visible"
@@ -148,6 +177,7 @@ export default function Home() {
               preserveAspectRatio="none"
             >
               <defs>
+                {/* The mask moves vertically to reveal the glowing version of the line */}
                 <mask id="loader-mask">
                   <motion.rect
                     x="0"
@@ -161,6 +191,7 @@ export default function Home() {
                   />
                 </mask>
               </defs>
+              {/* Static background diagonal line (dim) */}
               <path
                 d="M 35 100 L 65 0"
                 stroke="currentColor"
@@ -169,6 +200,7 @@ export default function Home() {
                 fill="none"
                 className={`${indices.loaderColor.color} opacity-30 transition-colors duration-1000`}
               />
+              {/* Glowing progress diagonal line (masked) */}
               <path
                 d="M 35 100 L 65 0"
                 stroke="currentColor"
@@ -184,13 +216,14 @@ export default function Home() {
 
           <div className="absolute inset-0 flex">
             {/* --- LEFT FRAGMENT --- */}
+            {/* 'diagonal-split' is a CSS clip-path mask */}
             <div className="absolute inset-0 z-10 diagonal-split overflow-hidden">
               <AnimatePresence initial={false} mode="popLayout">
                 <motion.div
                   key={`left-${leftToy.id}-${indices.version}`}
-                  initial={{ y: "100%" }}
+                  initial={{ y: "100%" }} // Slides in from bottom
                   animate={{ y: 0 }}
-                  exit={{ y: "-100%" }}
+                  exit={{ y: "-100%" }} // Slides out to top
                   transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute inset-0 group cursor-pointer"
                 >
@@ -198,14 +231,16 @@ export default function Home() {
                     to={`/project/${leftToy.slug}`}
                     className="absolute inset-0 z-30 flex lg:items-center lg:justify-start"
                   >
+                    {/* Hover overlay that removes the dark tint */}
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700 z-20" />
                     <img
                       src={leftToy.coverImage}
-                      alt={leftToy.coverAlt} // Updated SEO alt text
+                      alt={leftToy.coverAlt}
                       className="w-full h-full lg:w-[70%] lg:h-auto lg:max-h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 tablet-portrait-only"
                     />
+                    {/* Content Container (Title & Subtitle) */}
                     <motion.div
-                      animate={{ opacity: isFading ? 0 : 1 }}
+                      animate={{ opacity: isFading ? 0 : 1 }} // Controlled by the DURATION timer
                       transition={{ duration: 1.5, ease: "easeInOut" }}
                       className="absolute top-[35%] translate-y-[-50%] left-6 z-30 pointer-events-none md:top-[40%] md:left-16"
                     >
@@ -234,13 +269,14 @@ export default function Home() {
             </div>
 
             {/* --- RIGHT FRAGMENT --- */}
+            {/* Mirror of the left side, but with reverse clip-path and animations */}
             <div className="absolute inset-0 z-0 diagonal-split-reverse overflow-hidden">
               <AnimatePresence initial={false} mode="popLayout">
                 <motion.div
                   key={`right-${rightToy.id}-${indices.version}`}
-                  initial={{ y: "-100%" }}
+                  initial={{ y: "-100%" }} // Slides in from top
                   animate={{ y: 0 }}
-                  exit={{ y: "100%" }}
+                  exit={{ y: "100%" }} // Slides out to bottom
                   transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute inset-0 group cursor-pointer"
                 >
@@ -251,7 +287,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-700 z-20" />
                     <img
                       src={rightToy.coverImage}
-                      alt={rightToy.coverAlt} // Updated SEO alt text
+                      alt={rightToy.coverAlt}
                       className="w-full h-full lg:w-[70%] lg:h-auto lg:max-h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 tablet-portrait-only"
                     />
                     <motion.div
@@ -286,16 +322,16 @@ export default function Home() {
         </div>
       </main>
 
-      {/* --- EXPLORE BUTTON--- */}
+      {/* --- EXPLORE BUTTON --- */}
+      {/* Fixed-position CTA that hovers over the transitions */}
       <Link to="/gallery">
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="fixed bottom-[85px] md:bottom-25 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-15 bg-black text-white px-10 py-5 flex items-center gap-4 shadow-2xl group z-50 rounded-full hover:bg-neon-green hover:text-black transition-all duration-300 whitespace-nowrap"
+          className="fixed bottom-25 md:bottom-25 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-15 bg-black text-white px-10 py-5 flex items-center gap-4 shadow-2xl group z-50 rounded-full hover:bg-neon-green hover:text-black transition-all duration-300 whitespace-nowrap"
         >
           <span className="text-xs font-bold tracking-[0.3em] uppercase">
-            {" "}
-            EXPLORE{" "}
+            EXPLORE
           </span>
           <ArrowRight
             size={18}
