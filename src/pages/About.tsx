@@ -1,10 +1,19 @@
 import React, { useMemo, useEffect } from "react";
 import { motion } from "motion/react";
 import { Instagram, Twitter } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 export default function About() {
   return (
     <div className="flex-grow pt-32 md:pt-48 bg-white flex flex-col">
+      <Helmet>
+        <title>About | Dirtcake Studio</title>
+        <link rel="canonical" href="https://dirtcakestudio.com/about" />
+        <meta
+          name="description"
+          content="Learn about Dirtcake Studio, a DIY-focused creative studio based in Istanbul."
+        />
+      </Helmet>
       <div className="max-w-4xl mx-auto px-8 flex-grow pb-20">
         <motion.h2
           initial={{ opacity: 0, x: -20 }}

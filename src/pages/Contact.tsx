@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { Send, Loader2 } from "lucide-react"; // Added Loader2 for the loading state
+import { Helmet } from "react-helmet-async";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -43,6 +44,14 @@ export default function Contact() {
 
   return (
     <div className="flex-grow pt-32 md:pt-48 bg-white flex flex-col">
+      <Helmet>
+        <title>Contact | Dirtcake Studio</title>
+        <link rel="canonical" href="https://dirtcakestudio.com/contact" />
+        <meta
+          name="description"
+          content="Get in touch with Dirtcake Studio for collaborations and creative challenges."
+        />
+      </Helmet>
       <div className="max-w-4xl mx-auto px-8 flex-grow pb-20">
         <motion.h2
           initial={{ opacity: 0, x: -20 }}

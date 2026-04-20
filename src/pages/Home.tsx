@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 // Constants for the toy data and neon color themes
 import { TOYS, NEON_COLORS, Toy } from "../constants";
+import { Helmet } from "react-helmet-async";
 
 export default function Home() {
   /**
@@ -161,6 +162,13 @@ export default function Home() {
   return (
     // Main landing container with responsive min-heights
     <div className="flex-[2_0_0%] flex flex-col bg-white min-h-[50vh] md:min-h-[80vh] max-md:landscape:min-h-[110vh]">
+      <Helmet>
+        <link rel="canonical" href="https://dirtcakestudio.com" />
+        <meta
+          name="description"
+          content="Istanbul-based creative studio forging limited-edition designer toys and physical artifacts."
+        />
+      </Helmet>
       <main
         className="flex-1 relative flex flex-col justify-center px-3 pt-2 md:pt-3 pb-20 md:pb-6"
         onMouseEnter={() => setIsHovered(true)}

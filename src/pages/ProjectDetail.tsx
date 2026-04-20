@@ -96,6 +96,10 @@ export default function ProjectDetail() {
     <div className="flex-grow bg-white pt-32 md:pt-32 flex flex-col">
       <Helmet>
         <title>{`${toy.title} ${toy.subtitle} | Dirtcake Studio`}</title>
+        <link
+          rel="canonical"
+          href={`https://dirtcakestudio.com/project/${toy.slug}`}
+        />
         <meta name="description" content={toy.description.substring(0, 160)} />
         <meta
           property="og:title"

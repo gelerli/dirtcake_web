@@ -2,6 +2,7 @@ import React, { useMemo, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link } from "react-router-dom";
 import { TOYS, NEON_COLORS, Toy } from "../constants";
+import { Helmet } from "react-helmet-async";
 
 export default function Gallery() {
   const [activeFilter, setActiveFilter] = useState("ALL");
@@ -68,6 +69,14 @@ export default function Gallery() {
 
   return (
     <div className="flex-grow pt-32 md:pt-48 bg-white flex flex-col">
+      <Helmet>
+        <title>Gallery | Dirtcake Studio</title>
+        <link rel="canonical" href="https://dirtcakestudio.com/gallery" />
+        <meta
+          name="description"
+          content="Explore the collection of custom designer toys and resin figures by Dirtcake Studio."
+        />
+      </Helmet>
       <div className="max-w-7xl mx-auto px-8 w-full mb-16">
         {/* --- FILTER SYSTEM --- */}
         <div className="flex flex-wrap gap-3 items-center">
