@@ -48,7 +48,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-blue",
     coverImage: "/images/slave-duck-designer-toy-cover.webp",
     coverAlt:
-      "Slave Duck luxury obedience designer resin toy by Dirtcake Studio, featuring high-contrast black leather aesthetics and industrial hardware on a duck silhouette.",
+      "Slave Duck handmade luxury obedience designer resin toy by Dirtcake Studio, featuring high-contrast black leather aesthetics and industrial hardware on a duck silhouette.",
     galleryImages: [
       "/images/slave-duck-designer-toy-1.webp",
       "/images/slave-duck-designer-toy-2.webp",
@@ -81,7 +81,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-pink",
     coverImage: "/images/kiss-designer-toy-figure-sculpture-2.webp",
     coverAlt:
-      "The Kiss designer resin toy by Dirtcake Studio, a tribute to retro-glam with massive sculpted hair and a heart-shaped kiss suspended in mid-air for flirtation.",
+      "The Kiss handmade designer resin toy by Dirtcake Studio, a tribute to retro-glam with massive sculpted hair and a heart-shaped kiss suspended in mid-air for flirtation.",
     galleryImages: [
       "/images/kiss-designer-toy-figure-sculpture-2.webp",
       "/images/kiss-designer-toy-figure-sculpture-1.webp",
@@ -118,7 +118,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-pink",
     coverImage: "/images/zureyder-designer-toy-cover.webp",
     coverAlt:
-      "Zureyder tank beast designer resin toy by Dirtcake Studio, part tank and part beast with a grimy, weathered paint job and triple-pipe exhaust for a gritty look.",
+      "Zureyder tank beast handmade designer resin toy by Dirtcake Studio, part tank and part beast with a grimy, weathered paint job and triple-pipe exhaust for a gritty look.",
     galleryImages: [
       "/images/zureyder-designer-toy-1.webp",
       "/images/zureyder-designer-toy-2.webp",
@@ -155,7 +155,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-pink",
     coverImage: "/images/mr-giraffe-designer-toy-cover.webp",
     coverAlt:
-      "Mister Giraffe designer resin toy by Dirtcake Studio, featuring a sweatband, a head over the clouds, a chocolate dip ice cream cone, and slides on white socks.",
+      "Mister Giraffe handmade designer resin toy by Dirtcake Studio, featuring a sweatband, a head over the clouds, a chocolate dip ice cream cone, and slides on white socks.",
     galleryImages: [
       "/images/mr-giraffe-designer-toy-1.webp",
       "/images/mr-giraffe-designer-toy-2.webp",
@@ -190,7 +190,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-pink",
     coverImage: "/images/sneaky-snake-designer-toy-cover.webp",
     coverAlt:
-      "Sneaky Snake designer toy with a jagged blade in its mouth and packaging box by Dirtcake Studio, a colorful villain figure with a severed tail bone detail.",
+      "Sneaky Snake handmade designer toy with a jagged blade in its mouth and packaging box by Dirtcake Studio, a colorful villain figure with a severed tail bone detail.",
     galleryImages: [
       "/images/sneaky-snake-designer-toy-1.webp",
       "/images/sneaky-snake-designer-toy-2.webp",
@@ -227,7 +227,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-pink",
     coverImage: "/images/goodboy-designer-toy-cover.webp",
     coverAlt:
-      "Yellow, Black, Silver and Golden Good Boy luxury obedience designer toys by Dirtcake Studio, featuring oversized industrial zipper details on weighted resin pups.",
+      "Yellow, Black, Silver and Golden Good Boy handmade luxury obedience designer toys by Dirtcake Studio, featuring oversized industrial zipper details on weighted resin pups.",
     galleryImages: [
       "/images/goodboy-designer-toy-1.webp",
       "/images/goodboy-designer-toy-2.webp",
@@ -266,7 +266,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-pink",
     coverImage: "/images/dabomb-designer-toy-cover.webp",
     coverAlt:
-      "Da Bomb designer toy with red shades and sneakers by Dirtcake Studio, a high-energy hazard figure that brings a literal explosion of personality to the shelf.",
+      "Da Bomb handmade designer toy with red shades and sneakers by Dirtcake Studio, a high-energy hazard figure that brings a literal explosion of personality to the shelf.",
     galleryImages: [
       "/images/dabomb-designer-toy-1.webp",
       "/images/dabomb-designer-toy-2.webp",
@@ -299,7 +299,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-pink",
     coverImage: "/images/manduck-designer-action-figure-toy-cover.webp",
     coverAlt:
-      "Manduck designer action figure toy in full-body leather harness by Dirtcake Studio, featuring a ball gag detail and shiny black gear against bright yellow skin.",
+      "Manduck handmade designer action figure toy in full-body leather harness by Dirtcake Studio, featuring a ball gag detail and shiny black gear against bright yellow skin.",
     galleryImages: [
       "/images/manduck-designer-action-figure-toy-cover.webp",
       "/images/manduck-designer-action-figure-toy-2.webp",
@@ -340,7 +340,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-pink",
     coverImage: "/images/real-friend-designer-action-figure-toy-cover.webp",
     coverAlt:
-      "Real Friend action figure designer resin toy by Dirtcake Studio, a raw and unpolished companion that looks like an artifact from a dream materialized in resin.",
+      "Real Friend handmade designer action figure resin toy by Dirtcake Studio, a raw and unpolished companion that looks like an artifact from a dream materialized in resin.",
     galleryImages: [
       "/images/real-friend-designer-action-figure-toy-cover.webp",
       "/images/real-friend-designer-action-figure-toy-2.webp",
@@ -381,7 +381,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-pink",
     coverImage: "/images/zureyder-hot-rod-upgrade-kit-toy-01.webp",
     coverAlt:
-      "Zureyder Hot Rod upgrade kit with chrome exhaust pipes by Dirtcake Studio, featuring exposed engine-style parts and a scorched-metal aesthetic for speed.",
+      "Zureyder Hot Rod handmade upgrade kit with chrome exhaust pipes by Dirtcake Studio, featuring exposed engine-style parts and a scorched-metal aesthetic for speed.",
     galleryImages: [
       "/images/zureyder-hot-rod-upgrade-kit-toy-01.webp",
       "/images/zureyder-hot-rod-upgrade-kit-toy-02.webp",
@@ -467,7 +467,7 @@ export const TOYS: Toy[] = [
     neonClass: "neon-text-pink",
     coverImage: "/images/genie-mascot-figure-commission-1.webp",
     coverAlt:
-      "Genie mascot figure commission by Dirtcake Studio, showing a frontal high-angle photo of the friendly mascot and its resin magic lamp and smoke accessory.",
+      "Genie mascot handmade figure commission by Dirtcake Studio, showing a frontal high-angle photo of the friendly mascot and its resin magic lamp and smoke accessory.",
     galleryImages: [
       "/images/genie-mascot-figure-commission-1.webp",
       "/images/genie-mascot-figure-commission-2.webp",
