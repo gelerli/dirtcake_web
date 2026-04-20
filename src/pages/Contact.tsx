@@ -46,7 +46,7 @@ export default function Contact() {
     <div className="flex-grow pt-32 md:pt-48 bg-white flex flex-col">
       <Helmet>
         <title>Contact | Dirtcake Studio</title>
-        <link rel="canonical" href="https://dirtcakestudio.com/contact" />
+        <link rel="canonical" href="https://www.dirtcakestudio.com/contact" />
         <meta
           name="description"
           content="Get in touch with Dirtcake Studio for collaborations and creative challenges."

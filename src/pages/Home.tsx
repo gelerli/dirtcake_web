@@ -163,7 +163,7 @@ export default function Home() {
     // Main landing container with responsive min-heights
     <div className="flex-[2_0_0%] flex flex-col bg-white min-h-[50vh] md:min-h-[80vh] max-md:landscape:min-h-[110vh]">
       <Helmet>
-        <link rel="canonical" href="https://dirtcakestudio.com" />
+        <link rel="canonical" href="https://www.dirtcakestudio.com" />
         <meta
           name="description"
           content="Istanbul-based creative studio forging limited-edition designer toys and physical artifacts."

@@ -71,7 +71,7 @@ export default function Gallery() {
     <div className="flex-grow pt-32 md:pt-48 bg-white flex flex-col">
       <Helmet>
         <title>Gallery | Dirtcake Studio</title>
-        <link rel="canonical" href="https://dirtcakestudio.com/gallery" />
+        <link rel="canonical" href="https://www.dirtcakestudio.com/gallery" />
         <meta
           name="description"
           content="Explore the collection of custom designer toys and resin figures by Dirtcake Studio."

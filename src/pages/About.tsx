@@ -8,7 +8,7 @@ export default function About() {
     <div className="flex-grow pt-32 md:pt-48 bg-white flex flex-col">
       <Helmet>
         <title>About | Dirtcake Studio</title>
-        <link rel="canonical" href="https://dirtcakestudio.com/about" />
+        <link rel="canonical" href="https://www.dirtcakestudio.com/about" />
         <meta
           name="description"
           content="Learn about Dirtcake Studio, a DIY-focused creative studio based in Istanbul."

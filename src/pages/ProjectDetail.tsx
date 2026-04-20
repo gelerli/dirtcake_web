@@ -98,7 +98,7 @@ export default function ProjectDetail() {
         <title>{`${toy.title} ${toy.subtitle} | Dirtcake Studio`}</title>
         <link
           rel="canonical"
-          href={`https://dirtcakestudio.com/project/${toy.slug}`}
+          href={`https://www.dirtcakestudio.com/project/${toy.slug}`}
         />
         <meta name="description" content={toy.description.substring(0, 160)} />
         <meta
