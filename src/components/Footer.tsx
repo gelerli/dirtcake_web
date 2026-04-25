@@ -75,6 +75,12 @@ export default function Footer() {
             © 2026 Dirtcake Studio
           </p>
           <div className="flex gap-6 mt-1">
+            <a
+              href="https://www.dirtcakestudio.com/about"
+              className="text-[10px] font-bold tracking-[0.3em] uppercase hover:text-neon-pink cursor-pointer transition-colors"
+            >
+              About
+            </a>
             <span
               onClick={() => setActiveModal("privacy")}
               className="text-[10px] font-bold tracking-[0.3em] uppercase hover:text-neon-pink cursor-pointer transition-colors"
