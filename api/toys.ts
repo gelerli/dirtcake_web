@@ -32,6 +32,12 @@ const TOYS = [
     editioninfo: "LIMITED EDITION",
     edition: "12 PIECES, 1 AVAILABLE",
     collection: "designer toy",
+    tweetHooks: [
+      "this duck definitely has a backstory",
+      "i don’t trust this duck at all",
+      "something is off about this duck",
+    ],
+    tweetCTA: ["be honest would you display this", "yes or no"],
   },
   {
     id: 2,
@@ -69,6 +75,12 @@ const TOYS = [
     editioninfo: "LIMITED EDITION",
     edition: "5 PIECES, SOLD OUT",
     collection: "designer toy",
+    tweetHooks: [
+      "this one never stops flirting",
+      "caught mid kiss forever",
+      "too much or just enough",
+    ],
+    tweetCTA: ["would you put this on your shelf"],
   },
   {
     id: 3,
@@ -106,6 +118,12 @@ const TOYS = [
     editioninfo: "LIMITED EDITION",
     edition: "5 PIECES, SOLD OUT",
     collection: "designer toy",
+    tweetHooks: [
+      "this thing survived something",
+      "not built for peace",
+      "found this in the wasteland",
+    ],
+    tweetCTA: ["what would you name this"],
   },
   {
     id: 4,
@@ -141,6 +159,12 @@ const TOYS = [
     editioninfo: "LIMITED EDITION",
     edition: "6 PIECES, 3 AVAILABLE",
     collection: "designer toy",
+    tweetHooks: [
+      "he didnt ask to be this tall",
+      "living his best life honestly",
+      "this is peak relaxation",
+    ],
+    tweetCTA: ["mood or not"],
   },
   {
     id: 5,
@@ -178,6 +202,12 @@ const TOYS = [
     editioninfo: "LIMITED EDITION",
     edition: "10 PIECES, 7 AVAILABLE",
     collection: "designer toy",
+    tweetHooks: [
+      "turn off the lights",
+      "this one behaves differently at night",
+      "something about this feels illegal",
+    ],
+    tweetCTA: ["pet or run"],
   },
   {
     id: 6,
@@ -217,6 +247,12 @@ const TOYS = [
     editioninfo: "LIMITED EDITION",
     edition: "14 PIECES, 5 AVAILABLE.",
     collection: "designer toy",
+    tweetHooks: [
+      "he obeys but at what cost",
+      "good boy or something else",
+      "this one feels too quiet",
+    ],
+    tweetCTA: ["would you pet it"],
   },
   {
     id: 7,
@@ -250,6 +286,12 @@ const TOYS = [
     editioninfo: "LIMITED EDITION",
     edition: "1 of 1, SOLD OUT",
     collection: "designer toy",
+    tweetHooks: [
+      "this one has a short fuse",
+      "definitely not safe for work",
+      "who invited this guy",
+    ],
+    tweetCTA: ["chaos or no"],
   },
   {
     id: 8,
@@ -291,6 +333,12 @@ const TOYS = [
     editioninfo: "LIMITED EDITION",
     edition: "13 PIECES, 2 AVAILBLE",
     collection: "action figure",
+    tweetHooks: [
+      "same duck different energy",
+      "this escalated qwackly",
+      "this one is not for everyone",
+    ],
+    tweetCTA: ["orders?"],
   },
   {
     id: 9,
@@ -332,6 +380,12 @@ const TOYS = [
     editioninfo: "LIMITED EDITION",
     edition: "11 PIECES, SOLD OUT",
     collection: "action figure",
+    tweetHooks: [
+      "this one feels too real",
+      "not supposed to look like this",
+      "no regrets...",
+    ],
+    tweetCTA: ["display it or hide it"],
   },
   {
     id: 10,
@@ -385,6 +439,12 @@ const TOYS = [
     editioninfo: "LIMITED EDITION",
     edition: "1 of 1, SOLD OUT",
     collection: "designer toy",
+    tweetHooks: [
+      "we made it faster for no reason",
+      "this was a bad idea",
+      "now its actually dangerous",
+    ],
+    tweetCTA: ["defo worth the upgrade"],
   },
 
   {
@@ -427,6 +487,12 @@ const TOYS = [
     editioninfo: "COMMISSION WORK",
     edition: "Not For Sale",
     collection: "commission",
+    tweetHooks: [
+      "wish granted but not exactly",
+      "this came out of a lamp",
+      "would you trust this genie",
+    ],
+    tweetCTA: ["what would you wish for"],
   },
 ];
 
