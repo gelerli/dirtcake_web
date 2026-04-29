@@ -254,7 +254,7 @@ const TOYS = [
     collection: "designer toy",
     tweetHooks: [
       "he obeys but at what cost...",
-      "good boy or something else?",
+      "he will behave.",
       "this one feels too quiet 😁",
       "still wouldnt leave him home alone :)",
     ],
@@ -342,7 +342,7 @@ const TOYS = [
     tweetHooks: [
       "same duck different energy.",
       "this escalated qwackly 😁",
-      "this one is not for everyone 🤭",
+      "this is not for everyone 🤭",
       "are you a man or a duck?",
       "do you even lift?",
     ],
@@ -389,7 +389,7 @@ const TOYS = [
     edition: "11 PIECES, SOLD OUT",
     collection: "action figure",
     tweetHooks: [
-      "never feel alone again...",
+      "never feel lonely again...",
       "this one feels too real 🤭",
       "not supposed to look like this :)",
       "no regrets...",
@@ -499,7 +499,7 @@ const TOYS = [
     edition: "Not For Sale",
     collection: "commission",
     tweetHooks: [
-      "wish granted but not exactl 😁",
+      "wish granted but not exactly 😁",
       "this came out of a lamp :)",
       "would you trust this genie?",
     ],
