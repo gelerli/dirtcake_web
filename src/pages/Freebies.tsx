@@ -47,7 +47,7 @@ export default function Freebies() {
         />
         <meta
           property="og:image"
-          content="https://www.dirtcakestudio.com/freebies/thumbnail-dirtcake-free-game-assets-01.webp"
+          content="https://www.dirtcakestudio.com/images/og-share-cover.png"
         />
       </Helmet>
       /** * FIX: Added 'pt-24' and 'md:pt-32' * This creates a top buffer so the
