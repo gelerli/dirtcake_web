@@ -14,6 +14,7 @@ import Gallery from "./pages/Gallery.tsx";
 import About from "./pages/About.tsx";
 import Contact from "./pages/Contact.tsx";
 import ProjectDetail from "./pages/ProjectDetail.tsx";
+import Freebies from "./pages/Freebies.tsx";
 
 /**
  * LayoutWrapper handles the conditional styling based on the current route.
@@ -64,6 +65,7 @@ export default function App() {
             <Route path="/project/:slug" element={<ProjectDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/freebies" element={<Freebies />} />
           </Routes>
         </LayoutWrapper>
       </Router>
