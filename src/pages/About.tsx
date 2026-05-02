@@ -39,10 +39,11 @@ export default function About() {
               chaos.
             </p>
             <p className="text-lg leading-relaxed text-black/70">
-              Established in 2023, our mission is to tease the contemporary art
-              establishment through collectibles, stickers, prints, charms, and
-              other urban relics; Every release is a limited edition exploration
-              of modern age, sarcasm, culture, and urban mythology.
+              Established in 2023 by Tuğba Girgiç and Cihan Gelerli, our mission
+              is to tease the contemporary art establishment through
+              collectibles, stickers, prints, charms, and other urban relics;
+              Every release is a limited edition exploration of modern age,
+              sarcasm, culture, and urban mythology.
             </p>
             <div className="pt-4">
               <div className="flex gap-4 items-center">
