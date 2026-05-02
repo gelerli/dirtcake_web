@@ -50,8 +50,8 @@ export default function Freebies() {
           content="https://www.dirtcakestudio.com/images/og-share-cover.png"
         />
       </Helmet>
-      /** * FIX: Added 'pt-24' and 'md:pt-32' * This creates a top buffer so the
-      content starts BELOW your fixed header. */
+      {/** * FIX: Added 'pt-24' and 'md:pt-32' * This creates a top buffer so the
+      content starts BELOW your fixed header. */}
       <div className="flex-1 bg-white flex flex-col items-center pt-24 md:pt-32 pb-12 md:pb-20 px-6">
         {/* --- 1. TOP TEXT AREA --- */}
         <div className="text-center mb-16 max-w-2xl">
