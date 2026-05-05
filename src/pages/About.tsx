@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect } from "react";
 import { motion } from "motion/react";
-import { Instagram, Twitter } from "lucide-react";
+import { Instagram, Twitter, Youtube } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 
 export default function About() {
@@ -99,7 +99,22 @@ export default function About() {
                     size={18}
                     className="group-hover:scale-110 transition-transform"
                   />
-                  dirtcakestudio
+                  @dirtcakestudio
+                </a>
+              </div>
+              <br />
+              <div className="flex gap-4 items-center">
+                <a
+                  href="https://youtube.com/@dirtcakestudio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.4em] uppercase text-black hover:text-neon-coral transition-colors group"
+                >
+                  <Youtube
+                    size={18}
+                    className="group-hover:scale-110 transition-transform"
+                  />
+                  @dirtcakestudio
                 </a>
               </div>
             </div>
