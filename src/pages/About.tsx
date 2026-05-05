@@ -1,6 +1,13 @@
 import React, { useMemo, useEffect } from "react";
 import { motion } from "motion/react";
-import { Instagram, Twitter, Youtube } from "lucide-react";
+import {
+  SiInstagram,
+  SiYoutube,
+  SiX,
+  SiBehance,
+  SiBluesky,
+} from "@icons-pack/react-simple-icons";
+import { X, ExternalLink } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 
 export default function About() {
@@ -80,7 +87,7 @@ export default function About() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.4em] uppercase text-black hover:text-neon-coral transition-colors group"
                 >
-                  <Instagram
+                  <SiInstagram
                     size={18}
                     className="group-hover:scale-110 transition-transform"
                   />
@@ -95,7 +102,7 @@ export default function About() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.4em] uppercase text-black hover:text-neon-coral transition-colors group"
                 >
-                  <Twitter
+                  <SiX
                     size={18}
                     className="group-hover:scale-110 transition-transform"
                   />
@@ -110,7 +117,7 @@ export default function About() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.4em] uppercase text-black hover:text-neon-coral transition-colors group"
                 >
-                  <Youtube
+                  <SiYoutube
                     size={18}
                     className="group-hover:scale-110 transition-transform"
                   />

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Instagram, Twitter, X } from "lucide-react";
+import {
+  SiInstagram,
+  SiYoutube,
+  SiX,
+  SiBehance,
+  SiBluesky,
+} from "@icons-pack/react-simple-icons";
+import { X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 export default function Footer() {
@@ -58,7 +65,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="hover:text-neon-pink transition-colors"
           >
-            <Instagram size={20} />
+            <SiInstagram size={20} />
           </a>
           <a
             href="https://x.com/dirtcakestudio"
@@ -66,7 +73,7 @@ export default function Footer() {
             rel="noopener noreferrer"
             className="hover:text-neon-pink transition-colors"
           >
-            <Twitter size={20} />
+            <SiX size={20} />
           </a>
         </div>
 

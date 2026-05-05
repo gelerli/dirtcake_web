@@ -1,7 +1,14 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 // Switched from ShoppingBag to ShoppingCart
-import { Menu, X, ShoppingCart, Instagram, Twitter } from "lucide-react";
+import {
+  SiInstagram,
+  SiYoutube,
+  SiX,
+  SiBehance,
+  SiBluesky,
+} from "@icons-pack/react-simple-icons";
+import { Menu, X, ShoppingCart, ExternalLink } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { NEON_COLORS } from "../constants";
 
@@ -198,7 +205,7 @@ export default function Header() {
                   rel="noopener noreferrer"
                   className="hover:text-neon-pink transition-colors"
                 >
-                  <Instagram size={20} />
+                  <SiInstagram size={20} />
                 </a>
                 <a
                   href="https://x.com/dirtcakestudio"
@@ -206,7 +213,7 @@ export default function Header() {
                   rel="noopener noreferrer"
                   className="hover:text-neon-pink transition-colors"
                 >
-                  <Twitter size={20} />
+                  <SiX size={20} />
                 </a>
               </div>
             </div>

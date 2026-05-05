@@ -2,12 +2,13 @@ import React from "react";
 import { motion } from "motion/react";
 import { Helmet } from "react-helmet-async";
 import {
-  Download,
-  Instagram,
-  Twitter,
-  ExternalLink,
-  Globe,
-} from "lucide-react";
+  SiInstagram,
+  SiYoutube,
+  SiX,
+  SiBehance,
+  SiBluesky,
+} from "@icons-pack/react-simple-icons";
+import { Download, ExternalLink, Globe } from "lucide-react";
 
 const FREEBIE_DATA = [
   {
@@ -123,7 +124,7 @@ export default function Freebies() {
               rel="noreferrer"
               className="flex items-center gap-2 text-black hover:text-neon-pink transition-colors group"
             >
-              <Instagram size={18} />
+              <SiInstagram size={18} />
               <span className="text-[10px] font-black uppercase tracking-widest">
                 Instagram
               </span>
@@ -134,7 +135,7 @@ export default function Freebies() {
               rel="noreferrer"
               className="flex items-center gap-2 text-black hover:text-neon-pink transition-colors group"
             >
-              <Twitter size={18} />
+              <SiX size={18} />
               <span className="text-[10px] font-black uppercase tracking-widest">
                 Twitter
               </span>
@@ -145,7 +146,7 @@ export default function Freebies() {
               rel="noreferrer"
               className="flex items-center gap-2 text-black hover:text-neon-pink transition-colors group"
             >
-              <Globe size={18} />
+              <SiBluesky size={18} />
               <span className="text-[10px] font-black uppercase tracking-widest">
                 Bluesky
               </span>
@@ -156,9 +157,20 @@ export default function Freebies() {
               rel="noreferrer"
               className="flex items-center gap-2 text-black hover:text-neon-pink transition-colors group"
             >
-              <ExternalLink size={18} />
+              <SiBehance size={18} />
               <span className="text-[10px] font-black uppercase tracking-widest">
                 Behance
+              </span>
+            </a>
+            <a
+              href="https://youtube.com/@dirtcakestudio"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 text-black hover:text-neon-pink transition-colors group"
+            >
+              <SiYoutube size={18} />
+              <span className="text-[10px] font-black uppercase tracking-widest">
+                Youtube
               </span>
             </a>
           </div>
