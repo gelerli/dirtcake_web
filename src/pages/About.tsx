@@ -9,9 +9,36 @@ export default function About() {
       <Helmet>
         <title>About | Dirtcake Studio</title>
         <link rel="canonical" href="https://www.dirtcakestudio.com/about" />
+        <script type="application/ld+json">
+          {`
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Dirtcake Studio",
+        "url": "https://www.dirtcakestudio.com/",
+        "logo": "https://www.dirtcakestudio.com/images/og-share-cover.png"",
+        "foundingDate": "2023",
+        "founders": [
+          { "@type": "Person", "name": "Tuğba Girgiç" },
+          { "@type": "Person", "name": "Cihan Gelerli" }
+        ],
+        "location": {
+          "@type": "Place",
+          "name": "Istanbul, Turkey"
+        },
+        "sameAs": [
+          "https://www.instagram.com/dirtcakestudio",
+          "https://twitter.com/dirtcakestudio",
+          "https://www.behance.net/dirtcakestudio",
+          "https://youtube.com/@dirtcakestudio"
+        ],
+        "description": "DIY-focused and tech-forward creative studio based in Istanbul producing limited-edition designer toys, stickers, and other visual artifacts."
+      }
+    `}
+        </script>
         <meta
           name="description"
-          content="Learn about Dirtcake Studio, a DIY-focused creative studio based in Istanbul."
+          content="Learn about Dirtcake Studio, a DIY-focused creative studio founded by Tuğba Girç and Cihan Gelerli, based in Istanbul."
         />
       </Helmet>
       <div className="max-w-4xl mx-auto px-8 flex-grow pb-20">

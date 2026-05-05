@@ -32,10 +32,10 @@ export default function Freebies() {
   return (
     <>
       <Helmet>
-        <title>Free Vector Game Assets | Dirtcake Studio</title>
+        <title>Free Resources | Dirtcake Studio</title>
         <meta
           name="description"
-          content="Download free .AI vector game assets, stickers, and resources from Dirtcake Studio. High-quality files for personal and commercial use."
+          content="Download free high quality vector game assets, stickers, and other resources from Dirtcake Studio. Editable files for personal and commercial use."
         />
         <link rel="canonical" href="https://www.dirtcakestudio.com/freebies" />
 
