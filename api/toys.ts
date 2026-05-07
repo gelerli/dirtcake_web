@@ -318,8 +318,6 @@ const TOYS = [
       "/images/manduck-designer-action-figure-toy-5.webp",
       "/images/manduck-designer-action-figure-toy-6.webp",
       "/images/manduck-designer-action-figure-toy-7.webp",
-      "/images/manduck-designer-action-figure-toy-8.webp",
-      "/images/manduck-designer-action-figure-toy-9.webp",
     ],
     galleryAlt: [
       "Manduck handmade designer action figure toy in a leather harness, swapping innocence for an underground aesthetic with shiny black gear and aggressive details.",
@@ -329,8 +327,6 @@ const TOYS = [
       "Top-view close-up of the handmade designer toy and the ball gag detail, a key feature of its underground aesthetic and shiny black gear-focused design.",
       "Back view close-up of the Manduck handmade action figure with shiny black gear and yellow skin, highlighting the high-contrast gear against the muscular profile of the sculpt.",
       "Detail view of the Manduck handmade designer toy leather pants, showcasing the textures of the shiny black gear on this underground-themed resin action figure.",
-      "Detail of the front packaging design for the Manduck action figure blister pack, reflecting the underground aesthetic and aggressive theme of the figure.",
-      "Detail of the back packaging design for the Manduck resin toy blister pack, featuring the industrial and underground aesthetic of the figure by Dirtcake Studio.",
     ],
     description:
       "The counterpart to the chaos. Cloaked in a full-body leather-style harness with a ball gag detail, this duck swaps innocence for a strictly underground aesthetic. The shiny black gear against the bright yellow skin makes for an aggressive, unmistakable profile.",
@@ -365,10 +361,6 @@ const TOYS = [
       "/images/real-friend-designer-action-figure-toy-3.webp",
       "/images/real-friend-designer-action-figure-toy-4.webp",
       "/images/real-friend-designer-action-figure-toy-5.webp",
-      "/images/real-friend-designer-action-figure-toy-6.webp",
-      "/images/real-friend-designer-action-figure-toy-7.webp",
-      "/images/real-friend-designer-action-figure-toy-8.webp",
-      "/images/real-friend-designer-action-figure-toy-9.webp",
     ],
     galleryAlt: [
       "Real Friend handmade action figure designer toy, a piece that doesn't try to be pretty but tries to be real, showcasing a raw garage-workshop aesthetic.",
@@ -376,10 +368,6 @@ const TOYS = [
       "Close-up of the frontal view details on the Real Friend handmade action figure, focusing on the raw aesthetics of this in-your-face designer toy.",
       "Detail of the frontal view on the Real Friend handmade resin toy, highlighting the material honesty and the raw aesthetic.",
       "Detailed view of the Real Friend handmade designer toy, emphasizing its raw presence and style that defines this companionship piece.",
-      "Front packaging design of the Real Friend handmade action figure blister pack, presenting the raw aesthetics of the companion as a physical collector's product.",
-      "Back of the packaging design for the Real Friend handmade action figure blister pack, featuring the raw aesthetic of this resin-manifested companion.",
-      "The black version of the Real Friend designer toy shown with its packaging, maintaining the raw aesthetic of the original resin sculpture.",
-      "Back view of the black version of the Real Friend designer toy packaging, a raw and unpolished artifact from a dream by Dirtcake Studio.",
     ],
     description:
       "A raw, unpolished take on companionship. She looks like an artifact from a fever dream that someone decided to materialize in a garage workshop, with a presence that feels more like a degenerate thought than a factory product. She doesn't try to be pretty; she just tries to be real.",
@@ -423,7 +411,6 @@ const TOYS = [
       "/images/zureyder-hot-rod-upgrade-kit-toy-12.webp",
       "/images/zureyder-hot-rod-upgrade-kit-toy-13.webp",
       "/images/zureyder-hot-rod-upgrade-kit-toy-14.webp",
-      "/images/zureyder-hot-rod-upgrade-kit-toy-turntable.webp",
     ],
     galleryAlt: [
       "Zureyder Hot Rod handmade upgrade kit featuring aggressive, over-sized chrome exhaust pipes designed to inject a sense of reckless speed into the Zureyder silhouette.",
@@ -456,54 +443,6 @@ const TOYS = [
       "now its actually dangerous 🔥",
     ],
     tweetCTA: ["worth the upgrade?"],
-  },
-
-  {
-    id: 12,
-    slug: "genie-figure",
-    title: "GENIE",
-    subtitle: "FIGURE",
-    info: "Comissioned Work",
-    color: "text-neon-pink",
-    neonClass: "neon-text-pink",
-    coverImage: "/images/genie-mascot-figure-commission-1.webp",
-    coverAlt:
-      "Genie handmade mascot figure commission by Dirtcake Studio, showing a frontal high-angle photo of the friendly mascot and its resin magic lamp and smoke accessory.",
-    galleryImages: [
-      "/images/genie-mascot-figure-commission-1.webp",
-      "/images/genie-mascot-figure-commission-2.webp",
-      "/images/genie-mascot-figure-commission-3.webp",
-      "/images/genie-mascot-figure-commission-4.webp",
-      "/images/genie-mascot-figure-commission-5.webp",
-      "/images/genie-mascot-figure-commission-6.webp",
-      "/images/genie-mascot-figure-commission-7.webp",
-      "/images/genie-mascot-figure-commission-8.webp",
-      "/images/genie-mascot-figure-commission-9.webp",
-    ],
-    galleryAlt: [
-      "Geniehandmade  mascot figure commission by Dirtcake Studio, showing a frontal high-angle photo of the friendly mascot and its resin magic lamp and smoke accessory.",
-      "Frontal shot of the Genie handmade mascot resin figure commission with magic lamp, a friendly physical manifestation of a tech startup's digital AI assistant hero.",
-      "Side view photo of the Genie startup hero mascot handmade figure commission and magic lamp, bringing a digital AI assistant vision into the physical world.",
-      "Frontal close-up of the Genie mascot handmade figure commission and magic lamp, showcasing the friendly design and the craft detail of the physical resin sculpture.",
-      "Front left side photo of the Genie mascot handmade figure commission and magic lamp, highlighting the friendly and approachable design of the custom-sculpted hero.",
-      "Front right side close-up of the Genie mascot handmade figure commission, showing the magic lamp and the smoke accessory detail of the physical startup hero mascot.",
-      "Detail of the resin magic lamp and smoke accessory from the Genie mascot handmade figure commission, bridging the gap between digital vision and physical craft.",
-      "Close-up photo of the resin magic lamp and smoke accessory detail, with the Genie mascot handmade figure visible in the background of this custom commission work.",
-      "Close-up of the resin smoke accessory for the Genie mascot handmade figure commission, representing the physical face of an AI assistant platform by Dirtcake Studio.",
-    ],
-    description:
-      "We teamed up with a tech startup to bring their digital vision into the physical world. This custom-sculpted mascot serves as the face of their AI assistant platform, bridging the gap between cutting-edge technology and friendly, approachable design.",
-    year: "2025",
-    material: "Resin",
-    editioninfo: "COMMISSION WORK",
-    edition: "Not For Sale",
-    collection: "commission",
-    tweetHooks: [
-      "wish granted but not exactly 😁",
-      "this came out of a lamp :)",
-      "would you trust this genie?",
-    ],
-    tweetCTA: ["what would you wish for?"],
   },
 ];
 
