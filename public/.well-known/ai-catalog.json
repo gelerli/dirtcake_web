@@ -1,0 +1,16 @@
+{
+    "specVersion": "1.0",
+    "host": {
+        "displayName": "Dirtcake Studio",
+        "identifier": "did:web:dirtcakestudio.com"
+    },
+    "entries": [
+        {
+            "identifier": "urn:air:dirtcakestudio.com:knowledge:llms-txt",
+            "displayName": "Dirtcake Studio site guide (llms.txt)",
+            "type": "text/plain",
+            "url": "https://dirtcakestudio.com/llms.txt",
+            "description": "Overview of the Dirtcake Studio website: what the project is and where to find its main pages."
+        }
+    ]
+}

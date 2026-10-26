@@ -1,12 +1,19 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import { motion } from "motion/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { TOYS, NEON_COLORS, Toy } from "../constants";
+import { motion, useReducedMotion } from "motion/react";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { TOYS, NEON_COLORS } from "../constants";
+import { isAvailable } from "../helpers";
+import Seo from "../components/Seo";
+import ToyTitle from "../components/ToyTitle";
+import NotFound from "./NotFound";
+import { projectMeta, toyName } from "../seo";
+import { EMAIL, SOCIAL_URLS } from "../site";
+import { shuffle, pick } from "../utils";
 
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const reducedMotion = useReducedMotion();
 
   const toy = useMemo(() => TOYS.find((t) => t.slug === slug), [slug]);
 
@@ -14,31 +21,26 @@ export default function ProjectDetail() {
   const [isHovered, setIsHovered] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const pauseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [randomProjects, setRandomProjects] = useState<Toy[]>([]);
 
-  useEffect(() => {
-    // SCROLL LOGIC REMOVED: Now handled centrally by ScrollToTop.tsx
+  // Reset the carousel when moving to another project.
+  useEffect(() => setActiveImageIndex(0), [slug]);
 
-    // Reset state for the new project view
-    setActiveImageIndex(0);
-    const others = TOYS.filter((t) => t.slug !== slug);
-    const shuffled = [...others].sort(() => 0.5 - Math.random());
-    setRandomProjects(shuffled.slice(0, 4));
-  }, [slug]);
+  // Computed during render (no empty first paint / layout jump).
+  const randomProjects = useMemo(
+    () => shuffle(TOYS.filter((t) => t.slug !== slug)).slice(0, 4),
+    [slug],
+  );
 
-  const toyWithColor = useMemo(() => {
-    if (!toy) return null;
-    return {
-      ...toy,
-      ...NEON_COLORS[Math.floor(Math.random() * NEON_COLORS.length)],
-    };
-  }, [toy]);
+  const toyWithColor = useMemo(
+    () => (toy ? { ...toy, ...pick(NEON_COLORS) } : null),
+    [toy],
+  );
 
   const projectsWithColors = useMemo(() => {
-    const shuffledColors = [...NEON_COLORS].sort(() => 0.5 - Math.random());
+    const palette = shuffle(NEON_COLORS);
     return randomProjects.map((p, idx) => ({
       ...p,
-      ...shuffledColors[idx % shuffledColors.length],
+      ...palette[idx % palette.length],
     }));
   }, [randomProjects]);
 
@@ -46,14 +48,14 @@ export default function ProjectDetail() {
   const projectAlts = toy ? toy.galleryAlt : [];
 
   useEffect(() => {
-    if (projectImages.length <= 1 || isTimerPaused) return;
+    if (projectImages.length <= 1 || isTimerPaused || reducedMotion) return;
     const baseInterval = 9000;
-    const currentDelay = isHovered ? baseInterval + 4000 : baseInterval;
+    const delay = isHovered ? baseInterval + 4000 : baseInterval;
     const interval = setInterval(() => {
       setActiveImageIndex((prev) => (prev + 1) % projectImages.length);
-    }, currentDelay);
+    }, delay);
     return () => clearInterval(interval);
-  }, [projectImages.length, isHovered, isTimerPaused]);
+  }, [projectImages.length, isHovered, isTimerPaused, reducedMotion]);
 
   useEffect(() => {
     return () => {
@@ -62,27 +64,14 @@ export default function ProjectDetail() {
   }, []);
 
   if (!toy || !toyWithColor) {
-    return (
-      <div className="flex-grow flex items-center justify-center bg-white">
-        <div className="text-center">
-          <h1 className="text-4xl font-display font-black mb-4">
-            PROJECT NOT FOUND
-          </h1>
-          <Link to="/gallery" className="text-neon-blue hover:underline">
-            BACK TO GALLERY
-          </Link>
-        </div>
-      </div>
-    );
+    return <NotFound heading="PROJECT NOT FOUND" />;
   }
 
   const handleManualNav = (action: () => void) => {
     action();
     setIsTimerPaused(true);
     if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
-    pauseTimeoutRef.current = setTimeout(() => {
-      setIsTimerPaused(false);
-    }, 5000);
+    pauseTimeoutRef.current = setTimeout(() => setIsTimerPaused(false), 5000);
   };
 
   const nextImage = () =>
@@ -92,42 +81,28 @@ export default function ProjectDetail() {
       (prev) => (prev - 1 + projectImages.length) % projectImages.length,
     );
 
+  const name = toyName(toy);
+  const hasEditionCount = toy.edition.trim() !== "-";
+  const editionLabel = hasEditionCount ? toy.editioninfo : "EDITION";
+  const editionValue = hasEditionCount ? toy.edition : toy.editioninfo;
+  const labelClass =
+    "text-[10px] font-bold tracking-[0.3em] uppercase text-black/60 block mb-2";
+
   return (
     <div className="flex-grow bg-white pt-32 md:pt-32 flex flex-col">
-      <Helmet>
-        <title>{`${toy.title} ${toy.subtitle} | Dirtcake Studio`}</title>
-        <link
-          rel="canonical"
-          href={`https://www.dirtcakestudio.com/project/${toy.slug}`}
-        />
-        <meta name="description" content={toy.description.substring(0, 160)} />
-        <meta
-          property="og:title"
-          content={`${toy.title} - ${toy.subtitle} | Dirtcake Studio`}
-        />
-        <meta
-          property="og:description"
-          content={toy.description.substring(0, 160)}
-        />
-        <meta
-          property="og:image"
-          content={`https://dirtcakestudio.com${toy.coverImage}`}
-        />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${toy.title} - ${toy.subtitle}`} />
-        <meta
-          name="twitter:description"
-          content={toy.description.substring(0, 160)}
-        />
-      </Helmet>
+      <Seo {...projectMeta(toy)} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex-grow pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-32">
           <div className="flex flex-col gap-6">
             <div
+              role="region"
+              aria-roledescription="carousel"
+              aria-label={`${name} photos`}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
+              onFocus={() => setIsHovered(true)}
+              onBlur={() => setIsHovered(false)}
               className="relative aspect-[4/5] overflow-hidden bg-black/5 group"
             >
               <motion.div
@@ -136,10 +111,16 @@ export default function ProjectDetail() {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 {projectImages.map((img, idx) => (
-                  <div key={idx} className="w-full h-full flex-shrink-0">
+                  <div
+                    key={img}
+                    aria-hidden={idx !== activeImageIndex}
+                    className="w-full h-full flex-shrink-0"
+                  >
                     <img
                       src={img}
-                      alt={projectAlts[idx] || `${toy.title} view ${idx + 1}`}
+                      alt={projectAlts[idx] || `${name} view ${idx + 1}`}
+                      loading={idx === 0 ? "eager" : "lazy"}
+                      decoding="async"
                       className="w-full h-full object-cover"
                       draggable={false}
                     />
@@ -147,37 +128,38 @@ export default function ProjectDetail() {
                 ))}
               </motion.div>
 
-              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 pointer-events-none opacity-30 md:opacity-0 md:group-hover:opacity-50 transition-opacity duration-300">
+              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 pointer-events-none opacity-30 md:opacity-0 md:group-hover:opacity-50 md:focus-within:opacity-100 transition-opacity duration-300">
                 <button
                   onClick={() => handleManualNav(prevImage)}
                   type="button"
+                  aria-label="Previous image"
                   className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center hover:bg-white transition-colors shadow-lg pointer-events-auto"
                 >
-                  <ChevronLeft size={20} />
+                  <ChevronLeft size={20} aria-hidden="true" />
                 </button>
                 <button
                   onClick={() => handleManualNav(nextImage)}
                   type="button"
+                  aria-label="Next image"
                   className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center hover:bg-white transition-colors shadow-lg pointer-events-auto"
                 >
-                  <ChevronRight size={20} />
+                  <ChevronRight size={20} aria-hidden="true" />
                 </button>
               </div>
 
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              {/* Position dots (decorative; the thumbnails below are the accessible controls) */}
+              <div
+                aria-hidden="true"
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10 pointer-events-none"
+              >
                 {projectImages.map((_, idx) => (
-                  <button
+                  <span
                     key={idx}
-                    type="button"
-                    onClick={() =>
-                      handleManualNav(() => setActiveImageIndex(idx))
-                    }
-                    className={`h-1.5 transition-all duration-500 rounded-full ${
+                    className={`block h-1.5 transition-all duration-500 rounded-full ${
                       idx === activeImageIndex
                         ? "w-8 bg-white shadow-sm"
-                        : "w-2 bg-white/40 hover:bg-white/60"
+                        : "w-2 bg-white/40"
                     }`}
-                    aria-label={`Switch to image ${idx + 1}`}
                   />
                 ))}
               </div>
@@ -186,20 +168,19 @@ export default function ProjectDetail() {
             <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
               {projectImages.map((img, idx) => (
                 <button
-                  key={idx}
+                  key={img}
                   type="button"
-                  onClick={() =>
-                    handleManualNav(() => setActiveImageIndex(idx))
-                  }
+                  aria-label={`Show image ${idx + 1} of ${projectImages.length}`}
+                  aria-current={idx === activeImageIndex}
+                  onClick={() => handleManualNav(() => setActiveImageIndex(idx))}
                   className={`relative w-24 aspect-square flex-shrink-0 overflow-hidden border-2 transition-all duration-300 ${idx === activeImageIndex ? "border-black" : "border-transparent opacity-50 hover:opacity-100"}`}
                 >
+                  {/* Decorative: the button already has a name, and the full alt lives on the main image */}
                   <img
                     src={img}
-                    alt={
-                      projectAlts[idx]
-                        ? `Thumbnail: ${projectAlts[idx]}`
-                        : `Thumbnail ${idx + 1}`
-                    }
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
                 </button>
@@ -213,15 +194,13 @@ export default function ProjectDetail() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <span className="text-xs font-bold tracking-[0.5em] uppercase text-black/30 mb-4 block">
+              <span className="text-xs font-bold tracking-[0.5em] uppercase text-black/60 mb-4 block">
                 {toy.info}
               </span>
               <h1
                 className={`font-display text-6xl md:text-8xl font-black uppercase leading-none mb-8 ${toyWithColor.color} ${toyWithColor.neonClass}`}
               >
-                {toy.title}
-                <br />
-                {toy.subtitle}
+                <ToyTitle toy={toy} />
               </h1>
             </motion.div>
             <motion.div
@@ -231,45 +210,71 @@ export default function ProjectDetail() {
               className="space-y-12"
             >
               <div className="max-w-md">
-                <p className="text-xl leading-relaxed text-black/70 font-medium">
+                <p className="text-xl leading-relaxed text-black/75 font-medium">
                   {toy.description}
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-8 border-t border-black/5 pt-12">
+              <dl className="grid grid-cols-2 gap-8 border-t border-black/5 pt-12">
                 <div>
-                  <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-black/30 block mb-2">
-                    YEAR
-                  </span>
-                  <span className="text-sm font-bold uppercase">
-                    {toy.year}
-                  </span>
+                  <dt className={labelClass}>YEAR</dt>
+                  <dd className="text-sm font-bold uppercase">{toy.year}</dd>
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-black/30 block mb-2">
-                    MATERIAL
-                  </span>
-                  <span className="text-sm font-bold uppercase">
-                    {toy.material}
-                  </span>
+                  <dt className={labelClass}>MATERIAL</dt>
+                  <dd className="text-sm font-bold uppercase">{toy.material}</dd>
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-black/30 block mb-2">
-                    {toy.editioninfo}
-                  </span>
-                  <span className="text-sm font-bold uppercase">
-                    {toy.edition}
-                  </span>
+                  <dt className={labelClass}>{editionLabel}</dt>
+                  <dd className="text-sm font-bold uppercase">{editionValue}</dd>
                 </div>
-              </div>
+              </dl>
+
+              {isAvailable(toy) && (
+                <div className="border-t border-black/5 pt-8 max-w-md">
+                  <p className="text-sm font-medium text-black/70 leading-relaxed mb-5">
+                    Some pieces are sold only through physical shops. Tell us
+                    what you&apos;re after and we&apos;ll point you to where you
+                    can get it.
+                  </p>
+                  <Link
+                    to={`/contact?piece=${toy.slug}`}
+                    className="inline-flex items-center gap-4 bg-black text-white px-8 py-4 rounded-full text-xs font-bold tracking-[0.3em] uppercase hover:bg-neon-green hover:text-black transition-colors duration-300 group"
+                  >
+                    Ask where to get it
+                    <ArrowRight
+                      size={16}
+                      aria-hidden="true"
+                      className="group-hover:translate-x-1 transition-transform"
+                    />
+                  </Link>
+                  <p className="mt-5 text-[11px] font-bold tracking-[0.2em] uppercase text-black/60">
+                    Or{" "}
+                    <a
+                      href={SOCIAL_URLS.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-4 hover:text-neon-pink transition-colors"
+                    >
+                      DM us on Instagram
+                    </a>{" "}
+                    ·{" "}
+                    <a
+                      href={`mailto:${EMAIL}?subject=${encodeURIComponent(name)}`}
+                      className="underline underline-offset-4 hover:text-neon-pink transition-colors"
+                    >
+                      email
+                    </a>
+                  </p>
+                </div>
+              )}
             </motion.div>
           </div>
         </div>
 
-        {/* Other Projects Section */}
         <div className="border-t border-black/5 pt-24">
           <div className="flex justify-between items-end mb-12">
             <div>
-              <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-black/30 block mb-4">
+              <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-black/60 block mb-4">
                 DISCOVER MORE
               </span>
               <h2 className="font-display text-4xl md:text-6xl font-black uppercase">
@@ -299,17 +304,16 @@ export default function ProjectDetail() {
                 <div className="group relative aspect-[3/4] overflow-hidden bg-black cursor-pointer">
                   <img
                     src={project.coverImage}
-                    /* MODIFIED: Using coverAlt for keyword consistency in suggestions */
                     alt={project.coverAlt || project.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 opacity-80 group-hover:opacity-100"
+                    loading="lazy"
+                    decoding="async"
+                    className="toy-gray w-full h-full object-cover group-hover:scale-110 transition-all duration-700 opacity-80 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/20 to-transparent">
                     <h3
                       className={`font-display text-lg sm:text-xl md:text-2xl font-black ${project.color} ${project.neonClass} uppercase leading-none`}
                     >
-                      {project.title}
-                      <br />
-                      {project.subtitle}
+                      <ToyTitle toy={project} />
                     </h3>
                   </div>
                 </div>

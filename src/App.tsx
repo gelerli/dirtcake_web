@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,45 +6,43 @@ import {
   useLocation,
 } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { MotionConfig } from "motion/react";
 import Header from "./components/Header.tsx";
 import Footer from "./components/Footer.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import Home from "./pages/Home.tsx";
-import Gallery from "./pages/Gallery.tsx";
-import About from "./pages/About.tsx";
-import Contact from "./pages/Contact.tsx";
-import ProjectDetail from "./pages/ProjectDetail.tsx";
-import Freebies from "./pages/Freebies.tsx";
+
+// Everything except the landing page is split into its own chunk.
+const Gallery = lazy(() => import("./pages/Gallery.tsx"));
+const About = lazy(() => import("./pages/About.tsx"));
+const Contact = lazy(() => import("./pages/Contact.tsx"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail.tsx"));
+const Freebies = lazy(() => import("./pages/Freebies.tsx"));
+const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 /**
- * LayoutWrapper handles the conditional styling based on the current route.
- * This is the key to fixing the mobile scroll only on the landing page.
+ * Only the landing page is locked to the viewport (its diagonal slideshow
+ * needs it). Every other page scrolls normally with the browser window, so
+ * scroll restoration, find-in-page, print and scroll analytics all work.
  */
 function LayoutWrapper({ children }: { children: React.ReactNode }) {
-  const location = useLocation();
-  const isHome = location.pathname === "/";
+  const isHome = useLocation().pathname === "/";
 
   return (
     <div
-      className={`
-        flex flex-col bg-white isolation-isolate
-        /* Desktop: Always locked to screen height */
-        md:h-screen md:overflow-hidden 
-        /* Mobile: Lock height and hide scroll ONLY on Home page */
-        ${isHome ? "h-[100dvh] overflow-hidden" : "min-h-screen"}
-      `}
+      className={`flex flex-col bg-white ${isHome ? "h-[100dvh] overflow-hidden" : "min-h-[100dvh]"}`}
     >
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:bg-black focus:text-white focus:px-4 focus:py-2 focus:text-xs focus:font-bold focus:tracking-[0.2em] focus:uppercase"
+      >
+        Skip to content
+      </a>
       <Header />
 
       <main
-        className={`
-          flex-grow flex flex-col 
-          /* Desktop: Scroll internally */
-          md:overflow-y-auto 
-          /* Mobile: Natural scroll on all pages EXCEPT Home */
-          ${isHome ? "overflow-hidden" : "overflow-y-auto"}
-        `}
         id="main-content"
+        className={`flex-grow flex flex-col ${isHome ? "overflow-hidden" : ""}`}
       >
         <div className="flex-grow flex flex-col">{children}</div>
         <Footer />
@@ -56,19 +54,25 @@ function LayoutWrapper({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <HelmetProvider>
-      <Router>
-        <ScrollToTop />
-        <LayoutWrapper>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/project/:slug" element={<ProjectDetail />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/freebies" element={<Freebies />} />
-          </Routes>
-        </LayoutWrapper>
-      </Router>
+      {/* Honour the visitor's "reduce motion" setting for all animations. */}
+      <MotionConfig reducedMotion="user">
+        <Router>
+          <ScrollToTop />
+          <LayoutWrapper>
+            <Suspense fallback={null}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/gallery" element={<Gallery />} />
+                <Route path="/project/:slug" element={<ProjectDetail />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/freebies" element={<Freebies />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </LayoutWrapper>
+        </Router>
+      </MotionConfig>
     </HelmetProvider>
   );
 }
