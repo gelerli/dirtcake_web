@@ -10,6 +10,7 @@ import { MotionConfig } from "motion/react";
 import Header from "./components/Header.tsx";
 import Footer from "./components/Footer.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
+import CihanGelerli from "./pages/CihanGelerli.tsx";
 import Home from "./pages/Home.tsx";
 
 // Everything except the landing page is split into its own chunk.
@@ -51,6 +52,30 @@ function LayoutWrapper({ children }: { children: React.ReactNode }) {
   );
 }
 
+function AppRoutes() {
+  const isCihanGelerli = useLocation().pathname === "/cihangelerli";
+
+  if (isCihanGelerli) {
+    return <CihanGelerli />;
+  }
+
+  return (
+    <LayoutWrapper>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/project/:slug" element={<ProjectDetail />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/freebies" element={<Freebies />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </LayoutWrapper>
+  );
+}
+
 export default function App() {
   return (
     <HelmetProvider>
@@ -58,19 +83,7 @@ export default function App() {
       <MotionConfig reducedMotion="user">
         <Router>
           <ScrollToTop />
-          <LayoutWrapper>
-            <Suspense fallback={null}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/project/:slug" element={<ProjectDetail />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/freebies" element={<Freebies />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </LayoutWrapper>
+          <AppRoutes />
         </Router>
       </MotionConfig>
     </HelmetProvider>
