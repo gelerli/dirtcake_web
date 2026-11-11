@@ -405,14 +405,69 @@
   height: auto;
   min-height: 0;
   padding-bottom: 40px;
+  row-gap: 39px;
+}
+
+.expandedProject {
+  display: grid;
+  min-width: 0;
+  grid-column: 1 / -1;
+  grid-template-areas: "info gallery";
+  grid-template-columns: minmax(280px, 28%) minmax(0, 1fr);
+  column-gap: 30px;
+  align-items: start;
 }
 
 .gallery {
+  grid-area: gallery;
   position: relative;
   width: 100%;
   height: 480px;
   min-width: 0;
-  margin-top: 39px;
+  margin-top: 0;
+}
+
+.projectInfo {
+  grid-area: info;
+  min-width: 0;
+  margin-top: 0;
+  padding-left: 24px;
+  border-left: 2px solid var(--rule);
+  color: var(--muted);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.projectInfo h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+
+.projectSubtitle,
+.projectLink,
+.projectDescription {
+  display: block;
+  margin: 12px 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.projectLink {
+  width: fit-content;
+  font-style: italic;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+
+.projectDescription {
+  margin-top: 24px;
 }
 
 .galleryViewport {
@@ -591,18 +646,34 @@
     margin-left: min(110px, 32%);
   }
 
-  .category {
-    grid-template-columns: minmax(220px, 31%) minmax(0, 1fr);
-    column-gap: 30px;
-  }
-
   .categoryExpanded {
     height: auto;
     min-height: 0;
   }
 
+}
+
+@media (max-width: 1200px) {
+  .category {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 24px;
+  }
+
+  .expandedProject {
+    grid-template-areas:
+      "gallery"
+      "info";
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 24px;
+  }
+
   .gallery {
+    grid-area: gallery;
     height: clamp(320px, 50vw, 480px);
+  }
+
+  .projectInfo {
+    grid-area: info;
   }
 }
 
@@ -693,7 +764,6 @@
 
   .gallery {
     height: clamp(240px, 62vw, 360px);
-    margin-top: 24px;
   }
 
   .footer {

@@ -1,28 +1,8 @@
-export interface PortfolioImage {
-  src: string;
-  alt: string;
-}
-
-export interface PortfolioProject {
-  id: string;
-  thumbnail: PortfolioImage;
-  gallery: PortfolioImage[];
-}
-
-export interface PortfolioCategory {
-  id: string;
-  label: string;
-  description: string;
-  projects: PortfolioProject[];
-}
-
-export interface PortfolioSocialLink {
-  platform: "instagram" | "behance" | "github" | "glitchbooth" | "dirtcake";
-  label: string;
-  description: string;
-  url: string;
-  icon: string;
-}
+import type {
+  PortfolioCategory,
+  PortfolioData,
+  PortfolioSocialLink,
+} from "./types";
 
 export const CIHAN_GELERLI_PORTFOLIO = {
   identity: {
@@ -97,6 +77,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
       projects: [
         {
           id: "illustration-project-1",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-green-isometric.png",
             alt: "Colorful isometric game scene with green paths and small structures",
@@ -122,6 +106,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "illustration-project-2",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-isometric-assets.png",
             alt: "Collection of small isometric buildings and game assets",
@@ -147,6 +135,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "illustration-project-3",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-city-assets.png",
             alt: "Isometric city assets arranged in a technical sheet",
@@ -172,6 +164,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "illustration-project-4",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-colorful-isometric.png",
             alt: "Colorful isometric city scene with detailed buildings",
@@ -204,6 +200,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
       projects: [
         {
           id: "isometric-game-art-project-1",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-green-isometric.png",
             alt: "Colorful isometric game scene with green paths and small structures",
@@ -229,6 +229,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "isometric-game-art-project-2",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-isometric-assets.png",
             alt: "Collection of small isometric buildings and game assets",
@@ -254,6 +258,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "isometric-game-art-project-3",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-city-assets.png",
             alt: "Isometric city assets arranged in a technical sheet",
@@ -279,6 +287,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "isometric-game-art-project-4",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-colorful-isometric.png",
             alt: "Colorful isometric city scene with detailed buildings",
@@ -311,6 +323,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
       projects: [
         {
           id: "game-backgrounds-project-1",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-green-isometric.png",
             alt: "Colorful isometric game scene with green paths and small structures",
@@ -336,6 +352,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "game-backgrounds-project-2",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-isometric-assets.png",
             alt: "Collection of small isometric buildings and game assets",
@@ -361,6 +381,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "game-backgrounds-project-3",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-city-assets.png",
             alt: "Isometric city assets arranged in a technical sheet",
@@ -386,6 +410,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "game-backgrounds-project-4",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-colorful-isometric.png",
             alt: "Colorful isometric city scene with detailed buildings",
@@ -418,6 +446,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
       projects: [
         {
           id: "ui-design-project-1",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-green-isometric.png",
             alt: "Colorful isometric game scene with green paths and small structures",
@@ -443,6 +475,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "ui-design-project-2",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-isometric-assets.png",
             alt: "Collection of small isometric buildings and game assets",
@@ -468,6 +504,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "ui-design-project-3",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-city-assets.png",
             alt: "Isometric city assets arranged in a technical sheet",
@@ -493,6 +533,10 @@ export const CIHAN_GELERLI_PORTFOLIO = {
         },
         {
           id: "ui-design-project-4",
+          subtitle: "Subtitle",
+          link: { label: "Link", url: "https://example.com/" },
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           thumbnail: {
             src: "/cihangelerli/thumbnail-colorful-isometric.png",
             alt: "Colorful isometric city scene with detailed buildings",
@@ -523,6 +567,7 @@ export const CIHAN_GELERLI_PORTFOLIO = {
     navigation: {
       portfolio: "PORTFOLIO",
       getInTouch: "GET IN TOUCH",
+      getInTouchUrl: "https://dirtcakestudio.com/contact",
     },
     gallery: {
       rangeLabel: "Gallery image",
@@ -540,6 +585,6 @@ export const CIHAN_GELERLI_PORTFOLIO = {
       "I'm a 2D and 3D generalist, with a focus on illustration, UI design and isometric game art in recent years.",
     openGraphImage: "/cihangelerli/gallery-pixel-city-05.png",
   },
-};
+} satisfies PortfolioData;
 
 export type CihanGelerliPortfolio = typeof CIHAN_GELERLI_PORTFOLIO;
