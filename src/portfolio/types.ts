@@ -1,4 +1,5 @@
 export interface PortfolioImage {
+  /** Master file path relative to art-src, e.g. "cihangelerli/gallery/city-01.webp" */
   src: string;
   alt: string;
 }
@@ -24,7 +25,7 @@ export interface PortfolioCategory {
 }
 
 export interface PortfolioSocialLink {
-  platform: "instagram" | "behance" | "github" | "glitchbooth" | "dirtcake";
+  platform: string;
   label: string;
   description: string;
   url: string;

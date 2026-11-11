@@ -1,10 +1,21 @@
-import {
-  useRef,
-  useState,
-  type KeyboardEvent,
-} from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
+import "@fontsource-variable/inter";
+import "@fontsource/space-grotesk/400.css";
+import "@fontsource/space-grotesk/500.css";
 import styles from "./cihangelerli/CihanGelerliPage.module.css";
+import { prefetchImage } from "../portfolio/images";
 import type { PortfolioData, PortfolioProject } from "../portfolio/types";
+import { PortfolioImage } from "./PortfolioImage";
+
+function smoothBehavior(): ScrollBehavior {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? "auto"
+    : "smooth";
+}
+
+function prefetchProject(project: PortfolioProject) {
+  project.gallery.slice(0, 2).forEach((image) => prefetchImage(image.src));
+}
 
 function Gallery({
   categoryLabel,
@@ -39,7 +50,7 @@ function Gallery({
       viewport.scrollLeft;
     viewport.scrollTo({
       left: Math.min(slideStart, maxScroll),
-      behavior: "smooth",
+      behavior: smoothBehavior(),
     });
     setActiveIndex(index);
   }
@@ -65,9 +76,7 @@ function Gallery({
         viewport.getBoundingClientRect().left +
         viewport.scrollLeft;
       const targetScroll = Math.min(slideStart, maxScroll);
-      const distance = Math.abs(
-        viewport.scrollLeft - targetScroll,
-      );
+      const distance = Math.abs(viewport.scrollLeft - targetScroll);
       if (distance < nearestDistance) {
         nearestDistance = distance;
         nearestIndex = index;
@@ -92,11 +101,12 @@ function Gallery({
   }
 
   return (
-    <div className={styles.gallery} role="region" aria-label={regionLabel}>
+    <div className={styles.gallery}>
       <div
         className={styles.galleryViewport}
         ref={viewportRef}
         tabIndex={0}
+        role="region"
         aria-label={regionLabel}
         aria-roledescription="carousel"
         onScroll={updateActiveIndex}
@@ -116,10 +126,10 @@ function Gallery({
                 .replace("{current}", String(index + 1))
                 .replace("{total}", String(project.gallery.length))}
             >
-              <img
+              <PortfolioImage
                 src={image.src}
                 alt={image.alt}
-                draggable={false}
+                eager={index === 0}
                 onLoad={updateActiveIndex}
               />
             </figure>
@@ -168,6 +178,14 @@ export default function PortfolioPage({
     projectId: string;
   } | null>(null);
 
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = portfolio.seo.title;
+    return () => {
+      document.title = previousTitle;
+    };
+  }, [portfolio.seo.title]);
+
   function selectProject(categoryId: string, projectId: string) {
     setSelectedProject((currentSelection) =>
       currentSelection?.categoryId === categoryId &&
@@ -177,15 +195,13 @@ export default function PortfolioPage({
     );
   }
 
-  function handleThumbnailRailKeyDown(
-    event: KeyboardEvent<HTMLDivElement>,
-  ) {
+  function handleThumbnailRailKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     if (event.target !== event.currentTarget) return;
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     event.preventDefault();
     event.currentTarget.scrollBy({
       left: event.key === "ArrowRight" ? 240 : -240,
-      behavior: "smooth",
+      behavior: smoothBehavior(),
     });
   }
 
@@ -312,12 +328,12 @@ export default function PortfolioPage({
           id="portfolio"
           aria-label={portfolio.ui.navigation.portfolio}
         >
-          {portfolio.categories.map((category) => {
+          {portfolio.categories.map((category, categoryIndex) => {
             const categorySelection =
               selectedProject?.categoryId === category.id
-                ? category.projects.find(
+                ? (category.projects.find(
                     (project) => project.id === selectedProject.projectId,
-                  ) ?? null
+                  ) ?? null)
                 : null;
             const isExpanded = categorySelection !== null;
             const categorySelectionIndex = categorySelection
@@ -353,23 +369,21 @@ export default function PortfolioPage({
                       const isSelected =
                         selectedProject?.categoryId === category.id &&
                         selectedProject.projectId === project.id;
-                      const ariaLabel = portfolio.ui.gallery.thumbnailLabel
-                        .replace("{category}", category.label)
-                        .replace("{number}", String(index + 1));
 
                       return (
                         <button
                           className={`${styles.thumbnail} ${isSelected ? styles.thumbnailSelected : ""} ${isExpanded && !isSelected ? styles.thumbnailDimmed : ""}`}
                           type="button"
                           key={project.id}
-                          data-thumbnail-index={index}
-                          aria-label={ariaLabel}
                           aria-pressed={isSelected}
                           onClick={() => selectProject(category.id, project.id)}
+                          onPointerEnter={() => prefetchProject(project)}
+                          onFocus={() => prefetchProject(project)}
                         >
-                          <img
+                          <PortfolioImage
                             src={project.thumbnail.src}
                             alt={project.thumbnail.alt}
+                            eager={categoryIndex === 0 && index < 4}
                           />
                         </button>
                       );

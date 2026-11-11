@@ -4,6 +4,8 @@ import type {
   PortfolioSocialLink,
 } from "./types";
 
+import seo from "./cihangelerli.seo.json";
+
 export const CIHAN_GELERLI_PORTFOLIO = {
   identity: {
     name: "CİHAN GELERLİ",
@@ -22,7 +24,14 @@ export const CIHAN_GELERLI_PORTFOLIO = {
       { label: "languages:", value: "TR / EN / SP" },
     ],
     skillsLabel: "skills:",
-    skills: ["Adobe CS", "Figma", "Blender", "Spine Animation", "Rive", "Gen AI"],
+    skills: [
+      "Adobe CS",
+      "Figma",
+      "Blender",
+      "Spine Animation",
+      "Rive",
+      "Gen AI",
+    ],
     cvPrefix: "Find my current CV ",
     cvLinkText: "here",
     cvUrl:
@@ -73,7 +82,8 @@ export const CIHAN_GELERLI_PORTFOLIO = {
     {
       id: "illustration",
       label: "Illustration",
-      description: "Various assets and illustrations for a wide variety of projects",
+      description:
+        "Various assets and illustrations for a wide variety of projects",
       projects: [
         {
           id: "illustration-project-1",
@@ -196,7 +206,8 @@ export const CIHAN_GELERLI_PORTFOLIO = {
     {
       id: "isometric-game-art",
       label: "Isometric Game Art",
-      description: "Various assets and illustrations for a wide variety of projects",
+      description:
+        "Various assets and illustrations for a wide variety of projects",
       projects: [
         {
           id: "isometric-game-art-project-1",
@@ -319,7 +330,8 @@ export const CIHAN_GELERLI_PORTFOLIO = {
     {
       id: "game-backgrounds",
       label: "Game Backgrounds",
-      description: "Various assets and illustrations for a wide variety of projects",
+      description:
+        "Various assets and illustrations for a wide variety of projects",
       projects: [
         {
           id: "game-backgrounds-project-1",
@@ -442,7 +454,8 @@ export const CIHAN_GELERLI_PORTFOLIO = {
     {
       id: "ui-design",
       label: "UI Design",
-      description: "Various assets and illustrations for a wide variety of projects",
+      description:
+        "Various assets and illustrations for a wide variety of projects",
       projects: [
         {
           id: "ui-design-project-1",
@@ -578,13 +591,7 @@ export const CIHAN_GELERLI_PORTFOLIO = {
     },
     footerCopyright: "© 2026 - All rights reserved.",
   },
-  seo: {
-    canonicalPath: "/cihangelerli",
-    title: "Cihan Gelerli — Game Artist, Illustrator & UI Artist",
-    description:
-      "I'm a 2D and 3D generalist, with a focus on illustration, UI design and isometric game art in recent years.",
-    openGraphImage: "/cihangelerli/gallery-pixel-city-05.png",
-  },
+  seo,
 } satisfies PortfolioData;
 
 export type CihanGelerliPortfolio = typeof CIHAN_GELERLI_PORTFOLIO;
