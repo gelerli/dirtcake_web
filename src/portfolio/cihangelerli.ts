@@ -251,7 +251,7 @@ export const CIHAN_GELERLI_PORTFOLIO = {
       id: "isometric-game-art",
       label: "Isometric Art",
       description:
-        "Find my favorite isometric illustrations and assets for a wide variety of game and animation projects here 📍",
+        "Find my favorite isometric illustrations and assets for various game and animation projects here 📍",
       projects: [
         {
           id: "isometric-game-art-project-1",
@@ -398,9 +398,9 @@ export const CIHAN_GELERLI_PORTFOLIO = {
             "Layered background illustrations and assets for a visual novel style game",
           /*  
           link: { label: "Link", url: "https://example.com/" },
-          */
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          */
           thumbnail: {
             src: "/cihangelerli/thumbnails/thumbnail-game-background-telenovella.webp",
             alt: "Layered background illustrations and assets for a visual novel style game",
