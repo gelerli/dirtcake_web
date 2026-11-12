@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "predev": "npm run images",
     "dev": "vite --port=3000 --host=0.0.0.0",
+    "prebuild": "npm run images",
     "build": "vite build && node scripts/prerender.mjs && node scripts/postbuild-seo.mjs",
     "preview": "vite preview",
     "clean": "rm -rf dist",

@@ -336,12 +336,7 @@ export default function PortfolioPage({
                   ) ?? null)
                 : null;
             const isExpanded = categorySelection !== null;
-            const categorySelectionIndex = categorySelection
-              ? category.projects.indexOf(categorySelection)
-              : -1;
-            const projectName =
-              categorySelection?.name?.trim() ||
-              `${category.label} Project ${categorySelectionIndex + 1}`;
+
             const railLabel = portfolio.ui.gallery.thumbnailRailLabel.replace(
               "{category}",
               category.label,
@@ -406,7 +401,7 @@ export default function PortfolioPage({
                       aria-live="polite"
                     >
                       <h3 id={`project-${categorySelection.id}`}>
-                        {projectName}
+                        {categorySelection.title}
                       </h3>
                       {categorySelection.subtitle?.trim() ? (
                         <p className={styles.projectSubtitle}>

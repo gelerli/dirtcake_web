@@ -6,7 +6,7 @@ export interface PortfolioImage {
 
 export interface PortfolioProject {
   id: string;
-  name?: string;
+  title: string;
   thumbnail: PortfolioImage;
   gallery: PortfolioImage[];
   subtitle?: string;

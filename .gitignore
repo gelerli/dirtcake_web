@@ -8,3 +8,4 @@ coverage/
 !.env.example
 .agents/
 mcp_config.json
+.images-tmp

@@ -20,4 +20,8 @@ export default defineConfig({
     // HMR (Hot Module Replacement) configuration for development efficiency
     hmr: process.env.DISABLE_HMR !== "true",
   },
+
+  build: {
+    chunkSizeWarningLimit: 600,
+  },
 });
